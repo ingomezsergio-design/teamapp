@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TeamApp - Agentes</title>
+
     <style>
         /* --- Estilos Generales --- */
         body {
-            background-color: #0f172a; /* Fondo oscuro */
-            color: #e5e7eb; /* Texto claro */
+            background-color: #0f172a;
+            color: #e5e7eb;
             font-family: sans-serif;
             margin: 0;
         }
@@ -85,16 +86,18 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* --- Grilla de Agentes --- */
+        /* --- Grilla de Agentes (Círculos) --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1.5rem;
+            justify-items: center;
+            align-items: center;
         }
         .card {
-            border-radius: 18px;
-            padding: 18px;
-            height: 120px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -103,10 +106,20 @@
             color: #0f172a;
             background: linear-gradient(135deg, #8cf3e1, #5cc3ff);
             cursor: pointer;
-            transition: transform .15s ease;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.5s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            word-break: break-word;
+            padding: 10px;
+            font-size: 0.9em;
+            line-height: 1.2;
+            opacity: 0;
+        }
+        .card.show {
+            opacity: 1;
         }
         .card:hover {
-            transform: translateY(-3px);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* --- Modal --- */
@@ -142,7 +155,7 @@
             border-bottom: 1px solid #1f2937;
             padding: 8px 10px;
             text-align: left;
-            white-space: nowrap;
+            white-space: normal;
         }
         th {
             position: sticky;
@@ -249,21 +262,26 @@
 
         // --- Función principal para Cargar y Renderizar Agentes ---
         const renderAgents = (agents) => {
-            agentsGrid.innerHTML = ''; // Limpiar la grilla
+            agentsGrid.innerHTML = '';
             if (agents.length === 0) {
-                agentsGrid.innerHTML = '<p>No hay agentes para mostrar.</p>';
+                agentsGrid.innerHTML = '<p style="color: #94a3b8; text-align: center; grid-column: 1 / -1;">No se encontraron agentes.</p>';
             } else {
-                agents.forEach(agent => {
+                agents.forEach((agent, index) => {
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.dataset.name = agent.name;
                     card.dataset.row = agent.row;
                     card.textContent = agent.name;
-                    card.onclick = () => openRow(card); // Asignamos el evento click
+                    card.onclick = () => openRow(card);
+
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, index * 50);
+
                     agentsGrid.appendChild(card);
                 });
             }
-            updateCount(); // Actualizar contador al renderizar
+            updateCount();
         };
 
         const loadAgents = async () => {
@@ -275,7 +293,7 @@
                 if (data.ok) {
                     allAgents = data.agents;
                     renderAgents(allAgents);
-                    infoHint.textContent = `Carga desde Google Sheets (${allAgents.length} registros). Clic en una tarjeta para ver el detalle.`;
+                    infoHint.textContent = `Carga desde Google Sheets (${allAgents.length} registros). Clic para ver el detalle.`;
                     infoHint.style.display = 'block';
                 } else {
                     throw new Error(data.error || 'Ocurrió un error desconocido.');
