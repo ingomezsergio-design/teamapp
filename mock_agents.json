@@ -1,0 +1,2502 @@
+[
+  {
+    "Legajo": "1001",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1002",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1003",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1004",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1005",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1006",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #5",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1008",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #6",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1010",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #7",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1012",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #8",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1014",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #9",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1011",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #10",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1013",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #11",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1015",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #12",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1017",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #13",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1019",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #14",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1016",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #15",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1018",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #16",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1020",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #17",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1022",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #18",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1024",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #19",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1021",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #20",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1023",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #21",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1025",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #22",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1027",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #23",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1029",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #24",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1026",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #25",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1028",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #26",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1030",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #27",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1032",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #28",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1034",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #29",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1031",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #30",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1033",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #31",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1035",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #32",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1037",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #33",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1039",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #34",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1036",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #35",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1038",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #36",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1040",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #37",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1042",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #38",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1044",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #39",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1041",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #40",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1043",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #41",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1045",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #42",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1047",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #43",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1049",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #44",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1046",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #45",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1048",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #46",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1050",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #47",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1052",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #48",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1054",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #49",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1051",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #50",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1053",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #51",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1055",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #52",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1057",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #53",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1059",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #54",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1056",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #55",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1058",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #56",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1060",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #57",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1062",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #58",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1064",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #59",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1061",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #60",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1063",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #61",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1065",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #62",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1067",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #63",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1069",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #64",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1066",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #65",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1068",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #66",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1070",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #67",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1072",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #68",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1074",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #69",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1071",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #70",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1073",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #71",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1075",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #72",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1077",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #73",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1079",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #74",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1076",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #75",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1078",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #76",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1080",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #77",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1082",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #78",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1084",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #79",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1081",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #80",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1083",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #81",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1085",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #82",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1087",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #83",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1089",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #84",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1086",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #85",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1088",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #86",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1090",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #87",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1092",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #88",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1094",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #89",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1091",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #90",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1093",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #91",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1095",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #92",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1097",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #93",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1099",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #94",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1096",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #95",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1098",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #96",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1100",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #97",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1102",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #98",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1104",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #99",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1101",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #100",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1103",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #101",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1105",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #102",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1107",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #103",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1109",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #104",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1106",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #105",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1108",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #106",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1110",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #107",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1112",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #108",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1114",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #109",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1111",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #110",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1113",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #111",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1115",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #112",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1117",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #113",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1119",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #114",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1116",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #115",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1118",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #116",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1120",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #117",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1122",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #118",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1124",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #119",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1121",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #120",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1123",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #121",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1125",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #122",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1127",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #123",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1129",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #124",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1126",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #125",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1128",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #126",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1130",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #127",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1132",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #128",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1134",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #129",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1131",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #130",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1133",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #131",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1135",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #132",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1137",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #133",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1139",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #134",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1136",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #135",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1138",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #136",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1140",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #137",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1142",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #138",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1144",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #139",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1141",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #140",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1143",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #141",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1145",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #142",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1147",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #143",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1149",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #144",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1146",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #145",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1148",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #146",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1150",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #147",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1152",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #148",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1154",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #149",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1151",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #150",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1153",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #151",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1155",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #152",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1157",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #153",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1159",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #154",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1156",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #155",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1158",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #156",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1160",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #157",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1162",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #158",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1164",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #159",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1161",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #160",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1163",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #161",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1165",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #162",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1167",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #163",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1169",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #164",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1166",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #165",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1168",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #166",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1170",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #167",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1172",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #168",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1174",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #169",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1171",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #170",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1173",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #171",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1175",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #172",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1177",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #173",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1179",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #174",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1176",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #175",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1178",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #176",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1180",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #177",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1182",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #178",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1184",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #179",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1181",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #180",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1183",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #181",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1185",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #182",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1187",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #183",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1189",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #184",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1186",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #185",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1188",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #186",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1190",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #187",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1192",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #188",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1194",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #189",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1191",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #190",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1193",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #191",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1195",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #192",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1197",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #193",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1199",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #194",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1196",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #195",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1198",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #196",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1200",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #197",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1202",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #198",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1204",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #199",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1201",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #200",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1203",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #201",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1205",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #202",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1207",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #203",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1209",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #204",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1206",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #205",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1208",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #206",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1210",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #207",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1212",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #208",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1214",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #209",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1211",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #210",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1213",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #211",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1215",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #212",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1217",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #213",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1219",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #214",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1216",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #215",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1218",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #216",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1220",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #217",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1222",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #218",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1224",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #219",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1221",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #220",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1223",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #221",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1225",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #222",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1227",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #223",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1229",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #224",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1226",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #225",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1228",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #226",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1230",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #227",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1232",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #228",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1234",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #229",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1231",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #230",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1233",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #231",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1235",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #232",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1237",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #233",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1239",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #234",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1236",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #235",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1238",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #236",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1240",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #237",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1242",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #238",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1244",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #239",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1241",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #240",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1243",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #241",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1245",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #242",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1247",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #243",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1249",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #244",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  },
+  {
+    "Legajo": "1246",
+    "DNI": "29876543",
+    "Nombre": "ALVAREZ EDGAR GASTON NICOLAS #245",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "edgar@example.com"
+  },
+  {
+    "Legajo": "1248",
+    "DNI": "30222333",
+    "Nombre": "BOGADO BRENDA MICAELA #246",
+    "Sup": "López, Agustina",
+    "Score": "COMBO",
+    "Contrato": "Mensuales",
+    "Horas": "138",
+    "Email": "brenda@example.com"
+  },
+  {
+    "Legajo": "1250",
+    "DNI": "33111222",
+    "Nombre": "CORONEL BENITEZ ISAIAS EZEQUIEL #247",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "isaias@example.com"
+  },
+  {
+    "Legajo": "1252",
+    "DNI": "34555111",
+    "Nombre": "MEZA MARTINA YAMIL #248",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "martina@example.com"
+  },
+  {
+    "Legajo": "1254",
+    "DNI": "34555112",
+    "Nombre": "MEZA CINTIA ISABEL #249",
+    "Sup": "Ocampo, Carla",
+    "Score": "UNIF",
+    "Contrato": "Semanales",
+    "Horas": "32.5",
+    "Email": "cintia@example.com"
+  }
+]

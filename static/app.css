@@ -1,0 +1,8 @@
+:root{--bg:#0b1220;--ink:#e5e7eb;--muted:#94a3b8;--card:#101828;--accent:#6366f1}
+*{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:system-ui,Segoe UI,Roboto,Arial}
+.wrap{max-width:1200px;margin:0 auto;padding:16px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+h1{margin:0}
+.btn{background:var(--accent);color:#fff;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+.hint{color:var(--muted);font-size:14px}
+.alert{background:#581c87;color:#fff;padding:12px;border-radius:10px}

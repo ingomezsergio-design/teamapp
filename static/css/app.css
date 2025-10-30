@@ -1,0 +1,24 @@
+:root{--bg:#0b1020;--ink:#e8eef8;--muted:#9fb0c6;--card:#121a2f;--accent:#4f46e5;--good:#4ade80;--warm:#f97316;}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, #1d2848 0%, transparent 60%),linear-gradient(135deg,#0b1020,#151a2a);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+a{text-decoration:none;color:inherit}
+.btn{display:inline-flex;gap:.5rem;align-items:center;border:0;border-radius:.9rem;padding:.6rem 1rem;background:linear-gradient(180deg,#5b55ee,#4338ca);color:white;font-weight:600;box-shadow:0 10px 30px rgba(79,70,229,.25);cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-1px)}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1rem;backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.grid{display:grid;gap:1rem}
+h1{margin:.2rem 0 1rem 0}
+.small{color:var(--muted);font-size:.9rem}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+.badge{font-size:.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:.2rem .5rem;border-radius:.6rem}
+/* agents */
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+.agent{height:160px;border-radius:24px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:linear-gradient(135deg,rgba(74,222,128,.9),rgba(56,189,248,.9));color:#0b1020;font-weight:700;box-shadow:0 20px 60px rgba(0,0,0,.4);transition:.25s}
+.agent:hover{transform:translateY(-4px) scale(1.02)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center}
+.modal.show{display:flex}
+.modal > .inner{width:min(1100px,92vw);max-height:85vh;overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border-bottom:1px solid rgba(255,255,255,.1);padding:.6rem;text-align:left}
+thead th{position:sticky;top:0;background:rgba(0,0,0,.3)}
+/* splash */
+.clock{font-size:clamp(48px,8vw,80px);font-weight:800;letter-spacing:.04em}
+.date{color:var(--muted);margin-bottom:1.2rem}

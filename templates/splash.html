@@ -1,0 +1,18 @@
+{% extends 'tpl.html' %}
+{% block body %}
+<div class="center">
+  <div class="card" style="padding:2rem 2.4rem; text-align:center; animation:pop .5s ease">
+    <div class="clock" id="clock">00:00</div>
+    <div class="date" id="date">—</div>
+    <button class="btn" onclick="go('/main')">Ingresar</button>
+  </div>
+</div>
+<script>
+function tick(){
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  document.getElementById('date').textContent = now.toLocaleDateString();
+}
+setInterval(tick,1000); tick();
+</script>
+{% endblock %}

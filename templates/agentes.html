@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agentes</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <style>
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .card{border-radius:18px;padding:18px;height:120px;display:flex;align-items:center;justify-content:center;
+          text-align:center;font-weight:800;color:#0f172a;
+          background:linear-gradient(135deg,#8cf3e1,#5cc3ff);cursor:pointer;transition:transform .15s ease}
+    .card:hover{transform:translateY(-2px)}
+    .toolbar{display:flex;gap:10px;align-items:center;margin:6px 0 0}
+    .input{flex:1;min-width:180px;padding:10px 12px;border-radius:12px;border:1px solid #334155;background:#0f172a;color:#e5e7eb}
+    .pill{padding:8px 12px;border-radius:999px;background:#111827;border:1px solid #334155;color:#e5e7eb}
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:50}
+    .modal.show{display:flex}
+    .modal-card{width:min(920px,92vw);max-height:85vh;overflow:auto;background:#0b1220;color:#e5e7eb;border-radius:16px;border:1px solid #1f2937;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+    table{width:100%;border-collapse:collapse}
+    th,td{border-bottom:1px solid #1f2937;padding:8px 10px;text-align:left;white-space:nowrap}
+    th{position:sticky;top:0;background:#0b1220}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>AGENTES</h1>
+    <nav><a class="btn" href="/">Home</a></nav>
+  </header>
+  <main class="wrap">
+    {% if error %}
+      <div class="alert">⚠ {{ error }}</div>
+    {% endif %}
+    <div class="toolbar">
+      <input id="q" class="input" placeholder="Buscar agente por nombre…" oninput="filterCards()">
+      <span id="count" class="pill">0</span>
+    </div>
+    {% if agents and agents|length %}
+      <div class="hint">Carga directa desde Google Sheets ({{ agents|length }} registros). Clic en una tarjeta para ver el detalle de la fila.</div>
+      <div id="grid" class="grid">
+        {% for a in agents %}
+        <div class="card" data-name="{{ a.name|e }}" data-row="{{ a.row }}" onclick="openRow(this)">
+          {{ a.name|e }}
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No hay agentes para mostrar.</p>
+    {% endif %}
+  </main>
+
+  <div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h2 id="mTitle" style="margin:0">Detalle</h2>
+        <button class="btn" onclick="closeModal()">Cerrar</button>
+      </div>
+      <div id="mBody"></div>
+    </div>
+  </div>
+
+<script>
+  // contador inicial
+  updateCount();
+  function updateCount(){
+    const total = document.querySelectorAll('.card').length;
+    const visibles = [...document.querySelectorAll('.card')].filter(c=>c.style.display!=='none').length;
+    document.getElementById('count').textContent = visibles + ' / ' + total;
+  }
+  function filterCards(){
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    document.querySelectorAll('.card').forEach(el=>{
+      const ok = el.dataset.name.toLowerCase().includes(q);
+      el.style.display = ok ? '' : 'none';
+    });
+    updateCount();
+  }
+  async function openRow(el){
+    const row = el.dataset.row;
+    const name = el.dataset.name;
+    document.getElementById('mTitle').textContent = name;
+    const mBody = document.getElementById('mBody');
+    mBody.innerHTML = '<div class="hint">Cargando…</div>';
+    showModal();
+    try{
+      const res = await fetch('/api/agent?row='+encodeURIComponent(row));
+      const data = await res.json();
+      if(!data.ok){ throw new Error(data.error||'Error'); }
+      const headers = data.headers||[];
+      const r = data.row||[];
+      // construir tabla
+      let th='<tr><th>Columna</th><th>Valor</th></tr>';
+      let trs = headers.map((h,i)=>`<tr><td><b>${escapeHtml(h||'')}</b></td><td>${escapeHtml((r[i]||''))}</td></tr>`).join('');
+      mBody.innerHTML = `<table>${th}${trs}</table>`;
+    }catch(err){
+      mBody.innerHTML = '<div class="alert">⚠ '+escapeHtml(err.message)+'</div>';
+    }
+  }
+  function showModal(){ document.getElementById('modal').classList.add('show'); }
+  function closeModal(){ document.getElementById('modal').classList.remove('show'); }
+  function escapeHtml(s){return !s?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+</script>
+</body>
+</html>

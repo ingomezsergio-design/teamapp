@@ -1,0 +1,16 @@
+{% extends 'tpl.html' %}
+{% block body %}
+<h1>ACTUALIZACIONES</h1>
+<div id="updates" class="grid"></div>
+<script>
+fetch('/api/updates').then(r=>r.json()).then(data=>{
+  const c=document.getElementById('updates');
+  data.forEach(it=>{
+    const a=document.createElement('a');
+    a.className='card'; a.href=it.link||'#';
+    a.textContent=`${it.titulo} · ${it.horario} · ${it.frecuencia}`;
+    c.appendChild(a);
+  });
+});
+</script>
+{% endblock %}

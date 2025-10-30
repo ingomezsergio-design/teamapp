@@ -1,0 +1,15 @@
+{% extends 'tpl.html' %}
+{% block body %}
+<h1>MENÚ PRINCIPAL</h1>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+  <a class="card" href="/updates">📌 Actualizaciones</a>
+  <a class="card" href="/agentes">👥 Agentes</a>
+  <a class="card" href="/metrics">📊 Métricas</a>
+  <a class="card" href="/pdas">📈 PDA</a>
+  <a class="card" href="/horario">⏰ Horario</a>
+  <a class="card" href="/links">🔗 Links</a>
+  <a class="card" href="/planillas">📄 Planillas</a>
+  <a class="card" href="/otros">📂 Otros</a>
+  <a class="card" href="/info">📝 Info</a>
+</div>
+{% endblock %}
