@@ -1,314 +1,232 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TeamApp - Agentes</title>
-
-    <style>
-        /* --- Configuración General y Tipografía --- */
-        :root {
-            --background-color: #0b1220;
-            --card-background: #1e293b;
-            --text-color: #e2e8f0;
-            --primary-color: #38bdf8;
-            --border-color: #334155;
-            --shadow-color: rgba(56, 189, 248, 0.3);
-        }
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-        }
-
-        /* --- Contenedor Principal y Encabezado --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        .home-button {
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px; /* Píldora */
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-        .home-button:hover {
-            background-color: #7dd3fc;
-            transform: scale(1.05);
-        }
-
-        /* --- Barra de Búsqueda y Controles --- */
-        .search-container {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .input {
-            flex: 1;
-            padding: 0.75rem 1.25rem;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: var(--card-background);
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-        .pill {
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            background: var(--card-background);
-            border: 1px solid var(--border-color);
-            white-space: nowrap;
-        }
-
-        /* --- Animación de Carga (Spinner) --- */
-        .loader-container {
-            text-align: center;
-            padding: 3rem;
-        }
-        .spinner {
-            border: 4px solid var(--border-color);
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* --- Grilla y Tarjetas de Agentes (NUEVO DISEÑO) --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .card {
-            background-color: var(--card-background);
-            border-radius: 1rem; /* Bordes redondeados */
-            padding: 2rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            
-            /* Animación de entrada */
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        /* Animación de entrada escalonada */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Efecto de resplandor al pasar el mouse */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at var(--mouse-x) var(--mouse-y),
-                var(--shadow-color) 0%,
-                transparent 40%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        /* --- Estructura interna de la tarjeta para el efecto 3D --- */
-        .card-content {
-            transition: transform 0.2s ease;
-        }
-        .card:hover .card-content {
-            transform: scale(1.05); /* El contenido se agranda un poco */
-        }
-
-        /* --- Modal --- */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 50;
-        }
-        .modal.show { display: flex; }
-        .modal-card {
-            width: min(920px, 92vw);
-            max-height: 85vh;
-            overflow: auto;
-            background: var(--background-color);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.75rem 1rem;
-            text-align: left;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Agentes - TeamApp</title>
+<style>
+:root{--accent:#0a84ff;--muted:#6b7280;--bg:#f3f4f6;--card:#ffffff;--text:#0f1720;}
+.dark-mode{--accent:#0a84ff;--muted:#94a3b8;--bg:#0f172a;--card:#1a2538;--text:#e2e8f0;color-scheme:dark;}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+html,body{height:100%;margin:0;font-family:"Segoe UI",Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);}
+.wrap{width:100%;max-width:1280px;margin:20px auto;padding:18px;border-radius:12px;background:var(--card);box-shadow:0 10px 40px rgba(16,24,40,0.06);display:flex;flex-direction:column;gap:14px;}
+.dark-mode .wrap{box-shadow:0 10px 40px rgba(0,0,0,0.2);}
+.header-row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+h1{margin:0;font-size:18px;letter-spacing:-0.2px;} 
+.hint{margin:0;color:var(--muted);font-size:13px;}
+.controls{display:flex;gap:10px;align-items:center;}
+#theme-toggle{cursor:pointer;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--card);border:1px solid #eef2f7;transition:background .18s,border .18s,transform .14s;}
+#theme-toggle:hover{background:#f8fafc;}
+.dark-mode #theme-toggle:hover{background:#293347;}
+#btn-ver-todo,#btn-home{cursor:pointer;background:linear-gradient(180deg,var(--accent),#066fd9);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;border:0;box-shadow:0 8px 22px rgba(10,132,255,0.12);transition:transform .14s,box-shadow .14s;}
+#btn-ver-todo:active,#btn-home:active{transform:translateY(1px);}
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(100px,12.5vw,160px),1fr));gap:18px;align-items:center;margin-top:6px;}
+.agent{width:100%;height:clamp(100px,12.5vw,160px);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s ease-in-out,box-shadow .3s ease-in-out;box-shadow:0 15px 45px rgba(0,0,0,0.4);border:2px solid #ddd;color:#fff;background:linear-gradient(135deg,hsl(0,80%,65%),hsl(60,80%,65%));animation:hueShift 10s infinite linear;}
+.dark-mode .agent{box-shadow:0 15px 45px rgba(0,0,0,0.7);border:2px solid #555;}
+.agent .label{z-index:2;font-weight:700;font-size:clamp(12px,1.25vw,16px);line-height:1.05;padding:6px;}
+.agent:hover{transform:scale(1.05);box-shadow:0 25px 60px rgba(0,0,0,0.55);}
+.dark-mode .agent:hover{box-shadow:0 25px 60px rgba(0,0,0,0.85);}
+@keyframes hueShift{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(360deg);}}
+.card{background:var(--card);border-radius:10px;border:1px solid #eef2f7;padding:12px;overflow:auto;}
+.dark-mode .card{border:1px solid #293347;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{position:sticky;top:0;padding:10px 12px;text-align:left;background:var(--card);border-bottom:1px solid #e9eef6;z-index:2;font-weight:700;}
+.dark-mode thead th{background:var(--card);border-bottom:1px solid #293347;}
+th,td{padding:10px 12px;border-bottom:1px solid #f3f5f8;white-space:nowrap;}
+.dark-mode th,.dark-mode td{border-bottom:1px solid #293347;}
+tbody tr:hover td{background:rgba(10,132,255,0.035);}
+.dark-mode tbody tr:hover td{background:rgba(10,132,255,0.1);}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(8,12,20,0.48);z-index:999;opacity:0;transition:opacity .18s;}
+.dark-mode .modal{background:rgba(0,0,0,0.6);}
+.modal.show{opacity:1;display:flex;}
+.modal-content{width:94%;max-width:1150px;height:86%;border-radius:12px;padding:18px;background:var(--card);box-shadow:0 20px 60px rgba(16,24,40,0.28);position:relative;overflow:auto;transform:translateY(8px);transition:transform .18s;}
+.dark-mode .modal-content{box-shadow:0 20px 60px rgba(0,0,0,0.48);}
+.modal.show .modal-content{transform:translateY(0);}
+.modal-close{position:absolute;top:12px;right:12px;font-size:20px;cursor:pointer;z-index:5;}
+@media(max-width:640px){.agent-grid{gap:12px;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));}}
+#loader-area{width:100%;max-width:1280px;margin:0 auto;display:block;}
+.loader-card{display:flex;flex-direction:column;gap:8px;padding:10px;border-radius:10px;border:1px solid #eef2f7;background:var(--card);}
+.loader-row{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+#progress-track{height:12px;background:#e9eef6;border-radius:8px;overflow:hidden;width:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);}
+#progress-bar{width:0%;height:100%;background:linear-gradient(90deg,var(--accent),#066fd9);transition:width .12s linear;}
+.loader-sub{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.small-pill{background:#f1f5f9;padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted);border:1px solid #eef2f7;}
+.dark-mode .small-pill{background:#0f1726;color:var(--muted);border-color:#222e44;}
+#loader-card{display:none;}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Agentes</h1>
-            <a href="{{ url_for('home') }}" class="home-button">Home</a>
-        </header>
-
-        <div class="search-container">
-            <input id="search-input" class="input" placeholder="Buscar agente...">
-            <span id="agent-counter" class="pill">...</span>
+<div class="wrap">
+    <div class="header-row">
+        <div class="controls">
+            <button id="theme-toggle"><span id="theme-icon">🌙</span></button>
+            <button id="btn-home" onclick="window.location.href='{{ url_for('home') }}'">🏠 Home APP</button>
+            <button id="btn-ver-todo">👥 Ver todo el equipo</button>
         </div>
-
-        <div id="loader" class="loader-container">
-            <div class="spinner"></div>
-            <p>Cargando agentes...</p>
-        </div>
-
-        <div id="agents-grid" class="grid-container" style="opacity: 0;"></div>
-        <div id="error-message" class="error-container" style="display: none;"></div>
     </div>
-    
-    <div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
-        <div class="modal-card">
-             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem">
-                <h2 id="modal-title" style="margin:0">Detalle</h2>
-                <button class="home-button" onclick="closeModal()">Cerrar</button>
+
+    <div id="loader-area">
+        <div id="loader-card" class="loader-card card" aria-live="polite" aria-atomic="true">
+            <div class="loader-row">
+                <div id="loader-label" style="font-weight:700;">Cargando agentes...</div>
+                <div id="progress-percent" class="small-pill">0%</div>
             </div>
-            <div id="modal-body"></div>
+            <div id="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="progress-bar"></div>
+            </div>
+            <div class="loader-sub">
+                <div class="hint">Procesando:</div>
+                <div id="current-name" style="font-weight:700;">—</div>
+                <div style="flex:1"></div>
+                <div class="hint"><span id="loaded-count">0</span>/<span id="total-count">0</span> filas</div>
+            </div>
         </div>
     </div>
 
-    <script>
-        const agentsGrid = document.getElementById('agents-grid');
-        let allAgents = [];
+    <div id="agent-grid" class="agent-grid" aria-live="polite"></div>
+</div>
 
-        // --- Efecto 3D y de Resplandor en Tarjetas ---
-        function setupCardEffects() {
-            document.querySelectorAll('.card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    // Resplandor
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                    
-                    // Efecto 3D
-                    const rotateX = (y / rect.height - 0.5) * -15; // Inclinación vertical
-                    const rotateY = (x / rect.width - 0.5) * 15;  // Inclinación horizontal
-                    card.querySelector('.card-content').style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.querySelector('.card-content').style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                });
-            });
+<div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modal-body" class="card"></div>
+    </div>
+</div>
+
+<div id="modal-table" class="modal" onclick="if(event.target===this) closeModalTable()">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModalTable()">×</button>
+        <h2 style="text-align:center;margin:0 0 12px;">Equipo Completo</h2>
+        <div id="table-body" class="card" style="height:calc(100% - 56px);overflow:auto;"></div>
+    </div>
+</div>
+
+<script>
+let headersGlobal = [];
+let totalRows = 0;
+
+async function fetchFromApi(endpoint) {
+    try {
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error(`Error en la red: ${response.statusText}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error al obtener datos de la API:", error);
+        document.getElementById('agent-grid').innerHTML = `<div>Error al cargar: ${error.message}</div>`;
+        setLoaderVisible(false);
+        throw error;
+    }
+}
+
+// Cargar metadatos iniciales
+fetchFromApi('/api/agents/meta').then(initMeta);
+
+function initMeta(meta){
+    headersGlobal = meta.headers || [];
+    totalRows = meta.total || 0;
+    
+    document.getElementById('agent-grid').innerHTML = '';
+
+    if (!totalRows) {
+        document.getElementById('agent-grid').innerHTML = '<div>La hoja está vacía</div>';
+        return;
+    }
+    setLoaderVisible(true);
+    updateProgressUI(0, totalRows, 'Iniciando…');
+    loadInChunks(0, 200);
+}
+
+function loadInChunks(start, size){
+    fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`).then(async (chunk)=>{
+        const { rows, colors, end, total } = chunk;
+        await appendAgents(rows, colors, start, total);
+        if (end < total){
+            loadInChunks(end, size);
+        } else {
+            updateProgressUI(total, total, 'Completado ✔');
+            setTimeout(()=> setLoaderVisible(false), 800);
         }
+    });
+}
 
-        // --- Renderizado de Agentes ---
-        const renderAgents = (agents) => {
-            agentsGrid.innerHTML = '';
-            if (agents.length > 0) {
-                agents.forEach((agent, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.dataset.name = agent.name;
-                    card.dataset.row = agent.row;
-                    card.style.animationDelay = `${index * 50}ms`; // Retraso para la animación escalonada
-                    
-                    const content = document.createElement('div');
-                    content.className = 'card-content';
-                    content.textContent = agent.name;
-                    card.appendChild(content);
-                    
-                    card.onclick = () => openRow(card);
-                    agentsGrid.appendChild(card);
-                });
-                agentsGrid.style.opacity = 1;
-                setupCardEffects(); // Aplicar efectos a las nuevas tarjetas
-            }
-            updateCount();
-        };
+async function appendAgents(rows, colors, offset, total){
+    const grid = document.getElementById('agent-grid');
+    if (!rows || !rows.length) return;
+    const frag = document.createDocumentFragment();
+    for (let i=0; i<rows.length; i++){
+        const r = rows[i];
+        const idx = offset + i;
+        const name = r.length > 2 ? r[2] : 'Sin nombre'; 
+        const div = document.createElement('div');
+        div.className = 'agent';
+        div.setAttribute('title', name);
+        div.innerHTML = `<div class="label">${escapeHtml(name)}</div>`;
+        div.onclick = (() => {
+            const localRow = r;
+            return () => showStatsFromRow(localRow);
+        })();
+        frag.appendChild(div);
+        updateProgressUI(idx+1, total, name);
+    }
+    grid.appendChild(frag);
+    await new Promise(r=>setTimeout(r, 8));
+}
 
-        // --- Carga de Datos ---
-        const loadAgents = async () => {
-            const loader = document.getElementById('loader');
-            try {
-                const response = await fetch('/api/agents');
-                const data = await response.json();
-                if (data.ok) {
-                    allAgents = data.agents;
-                    renderAgents(allAgents);
-                } else {
-                    throw new Error(data.error || 'Error desconocido');
-                }
-            } catch (error) {
-                document.getElementById('error-message').textContent = `Error: ${error.message}`;
-            } finally {
-                loader.style.display = 'none';
-            }
-        };
+function showStatsFromRow(row){
+    const m=document.getElementById('modal'),b=document.getElementById('modal-body');
+    const name = row.length > 2 ? row[2] : '';
+    let html=`<h2 style="text-align:center">${escapeHtml(name)}</h2><table style="width:100%;">`;
+    headersGlobal.forEach((h, j) => {
+        html+=`<tr><td style="font-weight:700;padding:8px;width:35%;">${escapeHtml(h)}</td><td style="padding:8px;">${escapeHtml(row[j] || '')}</td></tr>`;
+    });
+    html+='</table>'; b.innerHTML=html; openModal('modal');
+}
 
-        // --- Funciones del Modal y Búsqueda ---
-        const searchInput = document.getElementById('search-input');
-        const agentCounter = document.getElementById('agent-counter');
+document.getElementById('btn-ver-todo').addEventListener('click', async ()=>{
+    const tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = '<div class="hint">Cargando tabla completa…</div>';
+    openModal('modal-table');
 
-        function updateCount() {
-            const visibles = document.querySelectorAll('.card:not([style*="display: none"])').length;
-            agentCounter.textContent = `${visibles} / ${allAgents.length}`;
-        }
-        
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase();
-            document.querySelectorAll('.card').forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                card.style.display = name.includes(query) ? '' : 'block';
-            });
-            updateCount();
-        });
-        
-        async function openRow(element) { /* ... (tu código del modal aquí) ... */ }
-        function closeModal() { /* ... (tu código del modal aquí) ... */ }
-        
-        // --- Iniciar Carga ---
-        document.addEventListener('DOMContentLoaded', loadAgents);
-    </script>
+    let start=0, size=400, allRows=[];
+    while (start < totalRows){
+        const chunk = await fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`);
+        allRows = allRows.concat(chunk.rows);
+        start = chunk.end;
+        if (chunk.end >= chunk.total) break;
+    }
+    tableBody.innerHTML = buildTable({ headers: headersGlobal, rows: allRows });
+});
+
+function buildTable(data){
+    let tableHeaders=data.headers.map(h => `<th>${escapeHtml(h)}</th>`).join('');
+    let rowsHTML = data.rows.map(r => `<tr>${r.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('');
+    return `<table><thead><tr>${tableHeaders}</tr></thead><tbody>${rowsHTML}</tbody></table>`;
+}
+
+function setLoaderVisible(visible){document.getElementById('loader-card').style.display = visible ? 'flex' : 'none';}
+function updateProgressUI(loaded,total,name){
+    const pct = total ? Math.round((loaded/total)*100) : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-percent').textContent = pct + '%';
+    document.getElementById('current-name').textContent = name || '—';
+    document.getElementById('loaded-count').textContent = loaded;
+    document.getElementById('total-count').textContent = total;
+}
+
+/* ======= Modales y Tema ======= */
+function openModal(id){const m=document.getElementById(id);m.style.display='flex';setTimeout(()=>m.classList.add('show'),10);}
+function closeModal(){close_('modal');}
+function closeModalTable(){close_('modal-table');}
+function close_(id){const m=document.getElementById(id);m.classList.remove('show');setTimeout(()=>m.style.display='none',180);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeModalTable();}});
+function escapeHtml(s){return!s?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+const toggleButton=document.getElementById('theme-toggle'),themeIcon=document.getElementById('theme-icon'),body=document.body;
+function enableDarkMode(){body.classList.add('dark-mode');themeIcon.textContent='☀️';localStorage.setItem('theme','dark');}
+function disableDarkMode(){body.classList.remove('dark-mode');themeIcon.textContent='🌙';localStorage.setItem('theme','light');}
+function toggleTheme(){body.classList.contains('dark-mode')?disableDarkMode():enableDarkMode();}
+const userTheme=localStorage.getItem('theme');
+if(userTheme==='dark')enableDarkMode();else if(userTheme==='light')disableDarkMode();else if(window.matchMedia('(prefers-color-scheme: dark)').matches)enableDarkMode();
+toggleButton.addEventListener('click',toggleTheme);
+</script>
 </body>
 </html>
