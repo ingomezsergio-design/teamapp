@@ -1,18 +1,254 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Panel · Home</title>
-  <link rel="stylesheet" href="/static/app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamApp - Panel de Control</title>
+    <style>
+        :root {
+            --background-color: #0b1220;
+            --card-background: #1e293b;
+            --text-color: #e2e8f0;
+            --primary-color: #38bdf8;
+            --border-color: #334155;
+            --shadow-color: rgba(56, 189, 248, 0.3);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: var(--text-color);
+            transition: background 1s ease-in-out;
+            overflow: hidden;
+        }
+
+        /* --- Estructura de Pantallas --- */
+        .screen {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            background: rgba(11, 18, 32, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 50px 20px;
+            transition: opacity 0.4s ease;
+            opacity: 0;
+            overflow-y: auto;
+        }
+        .screen.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* --- Pantalla de Bloqueo --- */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary-color);
+            background: url('https://images.unsplash.com/photo-1502685104226-ee32379fefbe') center/cover;
+        }
+        .time {
+            font-size: 4.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 20px var(--shadow-color);
+        }
+        .date {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Contenido General (Títulos, Botones, Tarjetas) --- */
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .button, a.button { /* Aplicado a <button> y <a> */
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            margin: 8px;
+            text-decoration: none;
+        }
+        .button:hover, a.button:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        /* --- Tarjetas de Actualización --- */
+        #updatesContainer {
+            width: min(600px, 90vw);
+        }
+        .card {
+            background: var(--card-background);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            text-align: left;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .card:hover {
+            background: #293548;
+            transform: translateY(-3px);
+        }
+        .tooltip {
+            display: none;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #cbd5e1;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .card.active .tooltip {
+            display: block;
+        }
+        .detail-link {
+            color: var(--primary-color);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-    <h1>Panel Interactivo</h1>
-    <nav><a href="/agentes" class="btn">Agentes</a></nav>
-  </header>
-  <main class="wrap">
-    <p>Entrá a <a href="/agentes">Agentes</a> para ver la carga directa desde Google Sheets.</p>
-  </main>
+
+    <div class="screen active" id="lock">
+        <div class="avatar"></div>
+        <div class="time" id="clock">00:00</div>
+        <div class="date" id="date">DD/MM/YYYY</div>
+        <button class="button" onclick="showScreen('main')">Ingresar</button>
+    </div>
+
+    <div class="screen" id="main">
+        <h1>MENÚ PRINCIPAL</h1>
+        <button class="button" onclick="showScreen('updates')">📌 Actualizaciones</button>
+        <a class="button" href="{{ url_for('agentes') }}">👥 Agentes</a>
+        <button class="button" onclick="showScreen('other')">⚙ Otras secciones</button>
+        <button class="button" onclick="showScreen('lock')">🔒 Bloquear</button>
+    </div>
+
+    <div class="screen" id="updates">
+        <h1>ACTUALIZACIONES</h1>
+        <div id="updatesContainer"></div>
+        <button class="button" onclick="showScreen('main')">🔙 Volver</button>
+    </div>
+
+    <div class="screen" id="other">
+        <h1>OTRAS SECCIONES</h1>
+        <button class="button" onclick="showScreen('metrics')">📊 Métricas</button>
+        <button class="button" onclick="openExternal('https://app.slack.com/client/T07H1PA89ML/C07KM5CPBL4')">💬 Slack Team</button>
+        <button class="button" onclick="showScreen('links')">🔗 Links Apex</button>
+        <button class="button" onclick="showScreen('main')">🔙 Volver</button>
+    </div>
+    
+    <div class="screen" id="metrics">
+        <h1>MÉTRICAS</h1>
+        <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbwhb-DdP05OuHOpBJfWP3Q1lL6PBF7-vUJbo3Qgfdz-vlEvoHRXUvnpflDqVohMQOF5/exec')">📊 Métricas Yoizen</button>
+        <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbwjc1-Mzayi9N6lBDLpUYxgzNB9OtyMAlkq5rmV3U0BhQVIobdVEK-nULYuuw6yqkfC/exec')">💾 Data de Métricas</button>
+        <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbxnPa6FbbHxzIQOnVJzSG1neKOoiDtC5sryik9AwinOIkS8VSy1J1-RYZq_N4jIH-lH/exec')">📊 Métricas PIC</button>
+        <button class="button" onclick="showScreen('other')">🔙 Volver</button>
+    </div>
+
+    <div class="screen" id="links">
+        <h1>Links Apex</h1>
+        <button class="button" onclick="openExternal('https://apex.wayfromhome.cx/')">🏠 ApexWay</button>
+        <button class="button" onclick="openExternal('https://mail.apexamerica.com/')">📧 Mail Apex</button>
+        <button class="button" onclick="openExternal('http://turecibo.com/')">📄 TuRecibo.com</button>
+        <button class="button" onclick="openExternal('https://jobs.apexamerica.com/')">💼 Postulaciones</button>
+        <button class="button" onclick="showScreen('other')">🔙 Volver</button>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cargar actualizaciones tan pronto como la página esté lista
+            renderUpdates();
+            // Iniciar el reloj
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+
+        const screens = document.querySelectorAll(".screen");
+        function showScreen(id) {
+            screens.forEach(s => s.classList.remove("active"));
+            const activeScreen = document.getElementById(id);
+            if(activeScreen) {
+                activeScreen.classList.add("active");
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
+            document.getElementById("clock").textContent = now.toLocaleTimeString([], timeOptions);
+            document.getElementById("date").textContent = now.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // Abre enlaces en una nueva pestaña
+        function openExternal(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function toggleTooltip(element) {
+            element.classList.toggle("active");
+        }
+        
+        // Datos de actualizaciones (traídos desde tu Code.gs)
+        const updatesData = [
+            { titulo: "MÉTRICAS YOIZEN", horario: "8:30 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbwhb-DdP05OuHOpBJfWP3Q1lL6PBF7-vUJbo3Qgfdz-vlEvoHRXUvnpflDqVohMQOF5/exec" },
+            { titulo: "CONEXIONES", horario: "11:00 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbxsQ9PKXPJAEnkCEBPQ-kr0SI1cI6g6Gd8JZBnIb-ry6jkq1PfUIj6fOYSMjpgR4-cH/exec" },
+            { titulo: "DEUDA", horario: "12:00 PM", frecuencia: "Lunes a Viernes", link: "https://sites.google.com/apexamerica.com/gsa/ausbreaks-deuda?authuser=0" },
+            { titulo: "EQAs", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycb-GB0CQyBwXs0BzGBSgxMD7LlPdcUeLLqJ63O7QgQ66bnXffrwo1YEa3wgwwL4UvM2/exec" },
+            { titulo: "Cambios", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycbxt_duTWTOgTSZfVE_PkjLp-1E-z6bYPLqRBdtq-EWfIzpLbu458F4UxpsWSyvuvojA/exec" }
+        ];
+
+        function renderUpdates() {
+            const container = document.getElementById("updatesContainer");
+            if (!container) return;
+            container.innerHTML = "";
+            updatesData.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <div style="font-weight: 600;">${item.titulo}</div>
+                    <div style="font-size: 0.9em; color: #94a3b8;">${item.horario} (${item.frecuencia})</div>
+                    <div class="tooltip">
+                        ${item.link 
+                            ? `📄 Accede desde <span class="detail-link" onclick="event.stopPropagation(); openExternal('${item.link}')">aquí</span>.`
+                            : "📢 Información enviada por Slack."
+                        }
+                    </div>
+                `;
+                card.onclick = () => toggleTooltip(card);
+                container.appendChild(card);
+            });
+        }
+    </script>
 </body>
 </html>
