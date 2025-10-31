@@ -17,14 +17,13 @@ thead tr:first-child th { position: sticky; top: 0; z-index: 3; background: #111
 thead tr:nth-child(2) th { position: sticky; top: 35px; background: #1f2937; z-index: 4; }
 th, td { border-bottom: 1px solid #1f2937; padding: 6px 8px; white-space: nowrap; }
 tr:hover td { background: rgba(14,165,164,0.15) !important; transition: background 0.3s ease; }
-thead th:nth-child(-n+6), tbody td:nth-child(-n+6) { position: sticky; left: 0; z-index: 2; background: inherit; }
-thead th:nth-child(1), tbody td:nth-child(1) { left: 0; }
-thead th:nth-child(2), tbody td:nth-child(2) { left: 50px; } /* Ajusta este valor según el ancho de tu primera columna */
-thead th:nth-child(3), tbody td:nth-child(3) { left: 150px; } /* Ajusta según el ancho acumulado */
-thead th:nth-child(4), tbody td:nth-child(4) { left: 250px; }
-thead th:nth-child(5), tbody td:nth-child(5) { left: 350px; }
-thead th:nth-child(6), tbody td:nth-child(6) { left: 450px; }
-thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
+thead th:nth-child(-n+6), tbody td:nth-child(-n+6) { position: sticky; background: inherit; z-index: 2; }
+thead th:nth-child(1), tbody td:nth-child(1) { left: 0px; }
+thead th:nth-child(2), tbody td:nth-child(2) { left: 80px; } /* Ajusta estos valores según el ancho de tus columnas */
+thead th:nth-child(3), tbody td:nth-child(3) { left: 160px; }
+thead th:nth-child(4), tbody td:nth-child(4) { left: 240px; }
+thead th:nth-child(5), tbody td:nth-child(5) { left: 320px; }
+thead th:nth-child(6), tbody td:nth-child(6) { left: 400px; }
 .filter-dropdown { position: relative; display: inline-block; }
 .filter-btn { background: #1f2937; color: #f8fafc; padding: 4px 8px; font-size: 12px; border: 1px solid #374151; border-radius: 4px; text-align: left; cursor: pointer; }
 .filter-btn:after { content: " ▼"; }
@@ -63,15 +62,14 @@ thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
 <script>
     const contentEl = document.getElementById('content');
     const clearFiltersBtn = document.getElementById('clear-filters');
-    let dataCache = null;
-    let rowsElCache = null;
+    let allRowsData = []; // Cache para los datos de las filas
+    let rowsElCache = []; // Cache para los elementos <tr> del DOM
 
-    // Llama a la nueva API de Flask para obtener los datos
     fetch('/api/matriz-noviembre/data')
         .then(response => response.json())
         .then(data => {
             if (data.error) throw new Error(data.error);
-            dataCache = data;
+            allRowsData = data.rows || [];
             render(data);
         })
         .catch(err => {
@@ -85,20 +83,17 @@ thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
             return;
         }
 
-        const { headers, rows, colors } = data;
+        const { headers, rows } = data;
         const topHeaders = headers;
-        const subHeaders = rows?.length > 0 ? rows[0] : [];
+        const subHeaders = rows?.length > 0 ? rows[0].map(cell => cell.value) : [];
         const dataRows = rows?.length > 1 ? rows.slice(1) : [];
-        const colorRows = colors?.length > 1 ? colors.slice(1) : [];
 
         const table = document.createElement('table');
         const thead = document.createElement('thead');
         
         const trA = document.createElement('tr');
         topHeaders.forEach(h => {
-            const th = document.createElement('th');
-            th.textContent = h;
-            trA.appendChild(th);
+            const th = document.createElement('th'); th.textContent = h; trA.appendChild(th);
         });
         thead.appendChild(trA);
 
@@ -112,14 +107,13 @@ thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
         table.appendChild(thead);
 
         const tbody = document.createElement('tbody');
-        dataRows.forEach((r, rowIndex) => {
+        dataRows.forEach(row => {
             const tr = document.createElement('tr');
-            r.forEach((c, colIndex) => {
+            row.forEach(cell => {
                 const td = document.createElement('td');
-                const bg = colorRows?.[rowIndex]?.[colIndex] || '#0f172a';
-                td.style.background = bg;
-                td.style.color = getContrastYIQ(bg);
-                td.textContent = c;
+                td.style.background = cell.color;
+                td.style.color = getContrastYIQ(cell.color);
+                td.textContent = cell.value;
                 tr.appendChild(td);
             });
             tbody.appendChild(tr);
@@ -130,7 +124,6 @@ thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
         contentEl.appendChild(table);
         rowsElCache = Array.from(contentEl.querySelectorAll('tbody tr'));
         
-        // Adjuntar eventos
         clearFiltersBtn.addEventListener('click', clearFilters);
         contentEl.addEventListener('click', handleClicks);
         contentEl.addEventListener('change', handleChange);
@@ -147,33 +140,28 @@ thead tr:nth-child(2) th:nth-child(-n+6) { z-index: 5; }
 
         const btn = document.createElement('button');
         btn.className = 'filter-btn';
-        btn.textContent = `Filtrar Col ${colIndex + 1}`;
+        btn.textContent = `Filtrar...`;
         dropdown.appendChild(btn);
 
         const content = document.createElement('div');
         content.className = 'filter-content';
 
         const search = document.createElement('input');
-        search.type = 'text';
-        search.placeholder = 'Buscar...';
-        search.className = 'filter-search';
+        search.type = 'text'; search.placeholder = 'Buscar...'; search.className = 'filter-search';
         content.appendChild(search);
         
         const selectAllLabel = document.createElement('label');
         const selectAllInput = document.createElement('input');
-        selectAllInput.type = 'checkbox';
-        selectAllInput.className = 'select-all';
+        selectAllInput.type = 'checkbox'; selectAllInput.className = 'select-all';
         selectAllLabel.appendChild(selectAllInput);
         selectAllLabel.appendChild(document.createTextNode(' (Seleccionar todo)'));
         content.appendChild(selectAllLabel);
 
-        const uniqueValues = [...new Set(dataRows.map(r => r[colIndex] || ''))].sort();
+        const uniqueValues = [...new Set(dataRows.map(r => r[colIndex]?.value || ''))].sort();
         uniqueValues.forEach(v => {
             const lbl = document.createElement('label');
             const cb = document.createElement('input');
-            cb.type = 'checkbox';
-            cb.className = 'filter-checkbox';
-            cb.value = v;
+            cb.type = 'checkbox'; cb.className = 'filter-checkbox'; cb.value = v;
             lbl.appendChild(cb);
             lbl.appendChild(document.createTextNode(` ${v === '' ? '(Vacío)' : v}`));
             content.appendChild(lbl);
