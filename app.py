@@ -12,11 +12,11 @@ SCOPES = [
 ]
 SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "1Iowck5rzr8gjIZwLCQazg1eNktoW6RQ9fmGnKoPNIyE")
 
-# --- Cache en memoria para los datos ---
+# --- Cache en memoria ---
 cache = {}
-CACHE_DURATION = 120  # 2 minutos
+CACHE_DURATION = 120
 
-# --- Función Unificada para Leer Datos de Google Sheets ---
+# --- Función Unificada para Leer Datos ---
 def get_sheet_data(sheet_name):
     current_time = time.time()
     cache_key = f"sheet_{sheet_name}"
@@ -32,9 +32,14 @@ def get_sheet_data(sheet_name):
     service = build('sheets', 'v4', credentials=creds)
     sheet_api = service.spreadsheets()
 
+    # --- CAMBIO CLAVE: Ser explícitos con el rango ---
+    # En lugar de solo 'MES11', usamos "'MES11'!A:Z" para eliminar la ambigüedad.
+    # Las comillas simples son importantes si el nombre de la hoja tiene espacios.
+    explicit_range = f"'{sheet_name}'!A:Z"
+
     result = sheet_api.get(
         spreadsheetId=SPREADSHEET_ID,
-        ranges=[sheet_name],
+        ranges=[explicit_range], # Usamos el rango explícito
         includeGridData=True
     ).execute()
 
@@ -63,7 +68,6 @@ def get_sheet_data(sheet_name):
                 values_list = []
                 colors_list = []
                 
-                # Rellenar celdas faltantes para que coincida con el número de encabezados
                 full_row_cells = row_values + [{}] * (len(headers) - len(row_values))
 
                 for cell in full_row_cells:
@@ -82,7 +86,7 @@ def get_sheet_data(sheet_name):
     cache[cache_key] = {"data": snapshot, "timestamp": current_time}
     return snapshot
 
-# --- Rutas de la Interfaz ---
+# --- Rutas y Endpoints (sin cambios) ---
 @app.route("/")
 def home(): return render_template("home.html")
 @app.route("/agentes")
@@ -92,7 +96,6 @@ def metricas_pic(): return render_template("metricas_pic.html")
 @app.route("/matriz-noviembre")
 def matriz_noviembre(): return render_template("matriz_noviembre.html")
 
-# --- Endpoints de API ---
 @app.route("/api/agents/meta")
 def api_agents_meta():
     data = get_sheet_data("Agentes")
@@ -111,15 +114,12 @@ def api_metricas_pic_data():
     data = get_sheet_data("Metricas PIC")
     return jsonify({"headers": data["headers"], "rows": data["rows_with_colors"]})
 
-# --- ENDPOINT CORREGIDO ---
 @app.route("/api/matriz-noviembre/data")
 def api_matriz_noviembre_data():
     try:
         data = get_sheet_data("MES11")
-        # Ahora enviamos la misma estructura que en Metricas PIC para mayor consistencia
         return jsonify({"headers": data["headers"], "rows": data["rows_with_colors"]})
     except Exception as e:
-        print(f"Error en api_matriz_noviembre_data: {e}")
         return jsonify({"error": str(e)}), 500
 
 # --- Lógica para correr la app ---
