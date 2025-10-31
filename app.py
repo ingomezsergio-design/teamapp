@@ -22,11 +22,9 @@ def get_sheet_data(sheet_name):
     current_time = time.time()
     cache_key = f"sheet_{sheet_name}"
 
-    # Si hay un cache válido, lo devolvemos
     if cache_key in cache and (current_time - cache[cache_key]["timestamp"] < CACHE_DURATION):
         return cache[cache_key]["data"]
 
-    # Si no, procedemos a leer desde la API de Google
     creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "service-account.json")
     if not os.path.exists(creds_path):
         raise FileNotFoundError(f"No se encontró el archivo de credenciales: {creds_path}")
@@ -46,33 +44,43 @@ def get_sheet_data(sheet_name):
     rows = []
     rows_with_colors = []
 
-    # Procesar encabezados
-    if 'rowData' in grid_data and len(grid_data['rowData']) > 0:
-        header_row_data = grid_data['rowData'][0].get('values', [])
-        headers = [cell.get('formattedValue', '') for cell in header_row_data]
+    if 'rowData' in grid_data:
+        # Procesar encabezados
+        if len(grid_data['rowData']) > 0:
+            header_row_data = grid_data['rowData'][0].get('values', [])
+            headers = [cell.get('formattedValue', '') for cell in header_row_data]
 
-    # Procesar filas
-    if 'rowData' in grid_data and len(grid_data['rowData']) > 1:
-        for row_data in grid_data['rowData'][1:]:
-            values_list = []
-            colors_list = []
-            
-            row_values = row_data.get('values', [])
-            for cell in row_values:
-                # Extraer valor
-                values_list.append(cell.get('formattedValue', ''))
+        # Procesar filas de datos
+        if len(grid_data['rowData']) > 1:
+            for row_data in grid_data['rowData'][1:]:
+                row_values = row_data.get('values', [])
                 
-                # Extraer color
-                bg_color_map = cell.get('effectiveFormat', {}).get('backgroundColor', {})
-                r = int(bg_color_map.get('red', 1) * 255)
-                g = int(bg_color_map.get('green', 1) * 255)
-                b = int(bg_color_map.get('blue', 1) * 255)
-                colors_list.append(f'#{r:02x}{g:02x}{b:02x}')
-            
-            rows.append(values_list)
-            rows_with_colors.append([{"value": v, "color": c} for v, c in zip(values_list, colors_list)])
+                # --- AJUSTE CLAVE: IGNORAR FILAS VACÍAS ---
+                # Si la fila no tiene celdas o todas sus celdas están vacías, la saltamos.
+                if not any(cell.get('formattedValue', '').strip() for cell in row_values):
+                    continue
 
-    # Guardar los datos en el cache antes de devolverlos
+                values_list = []
+                colors_list = []
+                
+                for cell in row_values:
+                    values_list.append(cell.get('formattedValue', ''))
+                    
+                    bg_color_map = cell.get('effectiveFormat', {}).get('backgroundColor', {})
+                    r = int(bg_color_map.get('red', 1) * 255)
+                    g = int(bg_color_map.get('green', 1) * 255)
+                    b = int(bg_color_map.get('blue', 1) * 255)
+                    colors_list.append(f'#{r:02x}{g:02x}{b:02x}')
+                
+                # Asegurarse de que la fila tenga la misma longitud que los encabezados
+                while len(values_list) < len(headers):
+                    values_list.append('')
+                while len(colors_list) < len(headers):
+                    colors_list.append('#ffffff')
+
+                rows.append(values_list)
+                rows_with_colors.append([{"value": v, "color": c} for v, c in zip(values_list, colors_list)])
+
     snapshot = {
         "headers": headers,
         "rows": rows,
@@ -96,7 +104,6 @@ def metricas_pic():
     return render_template("metricas_pic.html")
 
 # --- Endpoints de API ---
-
 @app.route("/api/agents/meta")
 def api_agents_meta():
     try:
@@ -116,7 +123,7 @@ def api_agents_chunk():
         
         return jsonify({
             "rows": data["rows"][start:end],
-            "colors": [], # La página de agentes no usa colores, devolvemos array vacío
+            "colors": [],
             "start": start,
             "end": end,
             "total": total,
