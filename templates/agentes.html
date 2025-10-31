@@ -9,10 +9,14 @@
 .dark-mode{--accent:#0a84ff;--muted:#94a3b8;--bg:#0f172a;--card:#1a2538;--text:#e2e8f0;color-scheme:dark;}
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 html,body{height:100%;margin:0;font-family:"Segoe UI",Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);}
-.wrap{width:100%;max-width:1280px;margin:20px auto;padding:18px;border-radius:12px;background:var(--card);box-shadow:0 10px 40px rgba(16,24,40,0.06);display:flex;flex-direction:column;gap:14px;}
+
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+.wrap{width:100%;max-width:1280px;margin:20px auto;padding:18px;border-radius:12px;background:var(--card);box-shadow:0 10px 40px rgba(16,24,40,0.06);display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;}
 .dark-mode .wrap{box-shadow:0 10px 40px rgba(0,0,0,0.2);}
 .header-row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-h1{margin:0;font-size:18px;letter-spacing:-0.2px;} 
+h1{margin:0;font-size:18px;letter-spacing:-0.2px;}
+/* ... (El resto de tu CSS va aquí, sin cambios) ... */
 .hint{margin:0;color:var(--muted);font-size:13px;}
 .controls{display:flex;gap:10px;align-items:center;}
 #theme-toggle{cursor:pointer;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--card);border:1px solid #eef2f7;transition:background .18s,border .18s,transform .14s;}
@@ -21,12 +25,13 @@ h1{margin:0;font-size:18px;letter-spacing:-0.2px;}
 #btn-ver-todo,#btn-home{cursor:pointer;background:linear-gradient(180deg,var(--accent),#066fd9);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;border:0;box-shadow:0 8px 22px rgba(10,132,255,0.12);transition:transform .14s,box-shadow .14s;}
 #btn-ver-todo:active,#btn-home:active{transform:translateY(1px);}
 .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(100px,12.5vw,160px),1fr));gap:18px;align-items:center;margin-top:6px;}
-.agent{width:100%;height:clamp(100px,12.5vw,160px);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s ease-in-out,box-shadow .3s ease-in-out;box-shadow:0 15px 45px rgba(0,0,0,0.4);border:2px solid #ddd;color:#fff;background:linear-gradient(135deg,hsl(0,80%,65%),hsl(60,80%,65%));animation:hueShift 10s infinite linear;}
-.dark-mode .agent{box-shadow:0 15px 45px rgba(0,0,0,0.7);border:2px solid #555;}
+.agent{width:100%;height:clamp(100px,12.5vw,160px);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s ease-in-out,box-shadow .3s ease-in-out;box-shadow: 0 15px 45px rgba(0,0,0,0.4);border: 2px solid #ddd;color:#fff;background:linear-gradient(135deg,hsl(0,80%,65%),hsl(60,80%,65%));animation:hueShift 10s infinite linear;transform:perspective(100px) rotateX(0deg) rotateY(0deg);}
+.dark-mode .agent{box-shadow:0 15px 45px rgba(0,0,0,0.7);border: 2px solid #555;}
 .agent .label{z-index:2;font-weight:700;font-size:clamp(12px,1.25vw,16px);line-height:1.05;padding:6px;}
-.agent:hover{transform:scale(1.05);box-shadow:0 25px 60px rgba(0,0,0,0.55);}
+.agent:hover{transform:perspective(100px) rotateX(2deg) rotateY(-2deg) scale(1.05);box-shadow:0 25px 60px rgba(0,0,0,0.55);}
 .dark-mode .agent:hover{box-shadow:0 25px 60px rgba(0,0,0,0.85);}
 @keyframes hueShift{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(360deg);}}
+.agent:nth-child(1){animation-duration:6s;} .agent:nth-child(2){animation-duration:8s;} .agent:nth-child(3){animation-duration:12s;} .agent:nth-child(4){animation-duration:15s;} .agent:nth-child(5){animation-duration:20s;} .agent:nth-child(6){animation-duration:18s;} .agent:nth-child(7){animation-duration:14s;} .agent:nth-child(8){animation-duration:10s;} .agent:nth-child(odd){animation-delay:-3s;} .agent:nth-child(even){animation-delay:-6s;}
 .card{background:var(--card);border-radius:10px;border:1px solid #eef2f7;padding:12px;overflow:auto;}
 .dark-mode .card{border:1px solid #293347;}
 table{width:100%;border-collapse:collapse;font-size:13px;}
@@ -56,177 +61,75 @@ tbody tr:hover td{background:rgba(10,132,255,0.035);}
 </style>
 </head>
 <body>
-<div class="wrap">
-    <div class="header-row">
-        <div class="controls">
-            <button id="theme-toggle"><span id="theme-icon">🌙</span></button>
-            <button id="btn-home" onclick="window.location.href='{{ url_for('home') }}'">🏠 Home APP</button>
-            <button id="btn-ver-todo">👥 Ver todo el equipo</button>
+
+    <div id="particles-js"></div>
+
+    <div class="wrap">
+        <div class="header-row">
+            <div class="controls">
+                <button id="theme-toggle"><span id="theme-icon">🌙</span></button>
+                <button id="btn-home" onclick="window.location.href='{{ url_for('home') }}'">🏠 Home APP</button>
+                <button id="btn-ver-todo">👥 Ver todo el equipo</button>
+            </div>
+        </div>
+        <div id="loader-area">
+            <div id="loader-card" class="loader-card card" aria-live="polite" aria-atomic="true">
+                <div class="loader-row">
+                    <div id="loader-label" style="font-weight:700;">Cargando agentes...</div>
+                    <div id="progress-percent" class="small-pill">0%</div>
+                </div>
+                <div id="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="progress-bar"></div>
+                </div>
+                <div class="loader-sub">
+                    <div class="hint">Procesando:</div>
+                    <div id="current-name" style="font-weight:700;">—</div>
+                    <div style="flex:1"></div>
+                    <div class="hint"><span id="loaded-count">0</span>/<span id="total-count">0</span> filas</div>
+                </div>
+            </div>
+        </div>
+        <div id="agent-grid" class="agent-grid" aria-live="polite"></div>
+    </div>
+    <div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modal-body" class="card"></div>
+        </div>
+    </div>
+    <div id="modal-table" class="modal" onclick="if(event.target===this) closeModalTable()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalTable()">×</button>
+            <h2 style="text-align:center;margin:0 0 12px;">Equipo Completo</h2>
+            <div id="table-body" class="card" style="height:calc(100% - 56px);overflow:auto;"></div>
         </div>
     </div>
 
-    <div id="loader-area">
-        <div id="loader-card" class="loader-card card" aria-live="polite" aria-atomic="true">
-            <div class="loader-row">
-                <div id="loader-label" style="font-weight:700;">Cargando agentes...</div>
-                <div id="progress-percent" class="small-pill">0%</div>
-            </div>
-            <div id="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div id="progress-bar"></div>
-            </div>
-            <div class="loader-sub">
-                <div class="hint">Procesando:</div>
-                <div id="current-name" style="font-weight:700;">—</div>
-                <div style="flex:1"></div>
-                <div class="hint"><span id="loaded-count">0</span>/<span id="total-count">0</span> filas</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="agent-grid" class="agent-grid" aria-live="polite"></div>
-</div>
-
-<div id="modal" class="modal" onclick="if(event.target===this) closeModal()">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">×</button>
-        <div id="modal-body" class="card"></div>
-    </div>
-</div>
-
-<div id="modal-table" class="modal" onclick="if(event.target===this) closeModalTable()">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModalTable()">×</button>
-        <h2 style="text-align:center;margin:0 0 12px;">Equipo Completo</h2>
-        <div id="table-body" class="card" style="height:calc(100% - 56px);overflow:auto;"></div>
-    </div>
-</div>
-
-<script>
-let headersGlobal = [];
-let totalRows = 0;
-
-async function fetchFromApi(endpoint) {
-    try {
-        const response = await fetch(endpoint);
-        if (!response.ok) throw new Error(`Error en la red: ${response.statusText}`);
-        return await response.json();
-    } catch (error) {
-        console.error("Error al obtener datos de la API:", error);
-        document.getElementById('agent-grid').innerHTML = `<div>Error al cargar: ${error.message}</div>`;
-        setLoaderVisible(false);
-        throw error;
-    }
-}
-
-// Cargar metadatos iniciales
-fetchFromApi('/api/agents/meta').then(initMeta);
-
-function initMeta(meta){
-    headersGlobal = meta.headers || [];
-    totalRows = meta.total || 0;
-    
-    document.getElementById('agent-grid').innerHTML = '';
-
-    if (!totalRows) {
-        document.getElementById('agent-grid').innerHTML = '<div>La hoja está vacía</div>';
-        return;
-    }
-    setLoaderVisible(true);
-    updateProgressUI(0, totalRows, 'Iniciando…');
-    loadInChunks(0, 200);
-}
-
-function loadInChunks(start, size){
-    fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`).then(async (chunk)=>{
-        const { rows, colors, end, total } = chunk;
-        await appendAgents(rows, colors, start, total);
-        if (end < total){
-            loadInChunks(end, size);
-        } else {
-            updateProgressUI(total, total, 'Completado ✔');
-            setTimeout(()=> setLoaderVisible(false), 800);
-        }
-    });
-}
-
-async function appendAgents(rows, colors, offset, total){
-    const grid = document.getElementById('agent-grid');
-    if (!rows || !rows.length) return;
-    const frag = document.createDocumentFragment();
-    for (let i=0; i<rows.length; i++){
-        const r = rows[i];
-        const idx = offset + i;
-        const name = r.length > 2 ? r[2] : 'Sin nombre'; 
-        const div = document.createElement('div');
-        div.className = 'agent';
-        div.setAttribute('title', name);
-        div.innerHTML = `<div class="label">${escapeHtml(name)}</div>`;
-        div.onclick = (() => {
-            const localRow = r;
-            return () => showStatsFromRow(localRow);
-        })();
-        frag.appendChild(div);
-        updateProgressUI(idx+1, total, name);
-    }
-    grid.appendChild(frag);
-    await new Promise(r=>setTimeout(r, 8));
-}
-
-function showStatsFromRow(row){
-    const m=document.getElementById('modal'),b=document.getElementById('modal-body');
-    const name = row.length > 2 ? row[2] : '';
-    let html=`<h2 style="text-align:center">${escapeHtml(name)}</h2><table style="width:100%;">`;
-    headersGlobal.forEach((h, j) => {
-        html+=`<tr><td style="font-weight:700;padding:8px;width:35%;">${escapeHtml(h)}</td><td style="padding:8px;">${escapeHtml(row[j] || '')}</td></tr>`;
-    });
-    html+='</table>'; b.innerHTML=html; openModal('modal');
-}
-
-document.getElementById('btn-ver-todo').addEventListener('click', async ()=>{
-    const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = '<div class="hint">Cargando tabla completa…</div>';
-    openModal('modal-table');
-
-    let start=0, size=400, allRows=[];
-    while (start < totalRows){
-        const chunk = await fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`);
-        allRows = allRows.concat(chunk.rows);
-        start = chunk.end;
-        if (chunk.end >= chunk.total) break;
-    }
-    tableBody.innerHTML = buildTable({ headers: headersGlobal, rows: allRows });
-});
-
-function buildTable(data){
-    let tableHeaders=data.headers.map(h => `<th>${escapeHtml(h)}</th>`).join('');
-    let rowsHTML = data.rows.map(r => `<tr>${r.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('');
-    return `<table><thead><tr>${tableHeaders}</tr></thead><tbody>${rowsHTML}</tbody></table>`;
-}
-
-function setLoaderVisible(visible){document.getElementById('loader-card').style.display = visible ? 'flex' : 'none';}
-function updateProgressUI(loaded,total,name){
-    const pct = total ? Math.round((loaded/total)*100) : 0;
-    document.getElementById('progress-bar').style.width = pct + '%';
-    document.getElementById('progress-percent').textContent = pct + '%';
-    document.getElementById('current-name').textContent = name || '—';
-    document.getElementById('loaded-count').textContent = loaded;
-    document.getElementById('total-count').textContent = total;
-}
-
-/* ======= Modales y Tema ======= */
-function openModal(id){const m=document.getElementById(id);m.style.display='flex';setTimeout(()=>m.classList.add('show'),10);}
-function closeModal(){close_('modal');}
-function closeModalTable(){close_('modal-table');}
-function close_(id){const m=document.getElementById(id);m.classList.remove('show');setTimeout(()=>m.style.display='none',180);}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeModalTable();}});
-function escapeHtml(s){return!s?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
-const toggleButton=document.getElementById('theme-toggle'),themeIcon=document.getElementById('theme-icon'),body=document.body;
-function enableDarkMode(){body.classList.add('dark-mode');themeIcon.textContent='☀️';localStorage.setItem('theme','dark');}
-function disableDarkMode(){body.classList.remove('dark-mode');themeIcon.textContent='🌙';localStorage.setItem('theme','light');}
-function toggleTheme(){body.classList.contains('dark-mode')?disableDarkMode():enableDarkMode();}
-const userTheme=localStorage.getItem('theme');
-if(userTheme==='dark')enableDarkMode();else if(userTheme==='light')disableDarkMode();else if(window.matchMedia('(prefers-color-scheme: dark)').matches)enableDarkMode();
-toggleButton.addEventListener('click',toggleTheme);
-</script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", { "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } } }, "retina_detect": true });
+        
+        // --- El resto de tu script de agentes va aquí, sin cambios ---
+        let headersGlobal = []; let totalRows = 0; const colMap = {'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6}; const preloadNames = ["ALVAREZ EDGAR","BOGADO BRENDA","CORONEL BENITEZ","DUARTE ORIANA","ENRIQUEZ AYELEN","FLORES ALDANA","GARCIA JOHANA","MEZA CINTIA","MEZA MARTINA","ORTIZ FORLIN","ROMERO MARILU","SALAS RUTH","SALVATIERRA BURGOS","STACH KLAUS","BERNAL LAUTARO","GOMEZ SERGIO ARIEL"];
+        function renderSkeleton(){ const grid=document.getElementById('agent-grid'); grid.innerHTML=''; preloadNames.forEach((name)=>{ const div=document.createElement('div'); div.className='agent'; div.setAttribute('title', name); div.innerHTML=`<div class="label">${escapeHtml(name)}</div>`; grid.appendChild(div); }); } renderSkeleton();
+        async function fetchFromApi(endpoint) { try { const response = await fetch(endpoint); if (!response.ok) { throw new Error(`Error en la red: ${response.statusText}`); } return await response.json(); } catch (error) { console.error("Error al obtener datos de la API:", error); document.getElementById('agent-grid').innerHTML = `<div>Error al cargar: ${error.message}</div>`; setLoaderVisible(false); throw error; } }
+        fetchFromApi('/api/agents/meta').then(initMeta);
+        function initMeta(meta){ headersGlobal = meta.headers || []; totalRows = meta.total || 0; document.getElementById('agent-grid').innerHTML = ''; if (!totalRows) { document.getElementById('agent-grid').innerHTML = '<div>La hoja está vacía</div>'; return; } setLoaderVisible(true); updateProgressUI(0, totalRows, 'Iniciando…'); loadInChunks(0, 200); }
+        function loadInChunks(start, size){ fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`).then(async (chunk)=>{ const { rows, colors, end, total } = chunk; await appendAgents(rows, colors, start, total); if (end < total){ loadInChunks(end, size); } else { updateProgressUI(total, total, 'Completado ✔'); setTimeout(()=> setLoaderVisible(false), 800); } }); }
+        async function appendAgents(rows, colors, offset, total){ const grid = document.getElementById('agent-grid'); if (!rows || !rows.length) return; const frag = document.createDocumentFragment(); for (let i=0; i<rows.length; i++){ const r = rows[i]; const idx = offset + i; const name = r.length > 2 ? r[2] : 'Sin nombre'; const div = document.createElement('div'); div.className = 'agent'; div.setAttribute('title', name); div.innerHTML = `<div class="label">${escapeHtml(name)}</div>`; div.onclick = (() => { const localRow = r; return () => showStatsFromRow(localRow); })(); frag.appendChild(div); updateProgressUI(idx+1, total, name); } grid.appendChild(frag); await new Promise(r=>setTimeout(r, 8)); }
+        function showStatsFromRow(row){ const m=document.getElementById('modal'),b=document.getElementById('modal-body'); const name = row.length > 2 ? row[2] : ''; let html=`<h2 style="text-align:center">${escapeHtml(name)}</h2><table style="width:100%;">`; headersGlobal.forEach((h, j) => { html+=`<tr><td style="font-weight:700;padding:8px;width:35%;">${escapeHtml(h)}</td><td style="padding:8px;">${escapeHtml(row[j] || '')}</td></tr>`; }); html+='</table>'; b.innerHTML=html; openModal('modal'); }
+        document.getElementById('btn-ver-todo').addEventListener('click', async ()=>{ const tableBody = document.getElementById('table-body'); tableBody.innerHTML = '<div class="hint">Cargando tabla completa…</div>'; openModal('modal-table'); let start=0, size=400, allRows=[]; while (start < totalRows){ const chunk = await fetchFromApi(`/api/agents/chunk?start=${start}&size=${size}`); allRows = allRows.concat(chunk.rows); start = chunk.end; if (chunk.end >= chunk.total) break; } tableBody.innerHTML = buildTable({ headers: headersGlobal, rows: allRows }); });
+        function buildTable(data){ let tableHeaders=data.headers.map(h => `<th>${escapeHtml(h)}</th>`).join(''); let rowsHTML = data.rows.map(r => { let tds = r.map(cell => `<td>${escapeHtml(cell)}</td>`).join(''); return `<tr>${tds}</tr>`; }).join(''); return `<table><thead><tr>${tableHeaders}</tr></thead><tbody>${rowsHTML}</tbody></table>`; }
+        function setLoaderVisible(visible){ const card=document.getElementById('loader-card'); card.style.display = visible ? 'flex' : 'none'; }
+        function updateProgressUI(loaded,total,name){ const pct = total ? Math.round((loaded/total)*100) : 0; document.getElementById('progress-bar').style.width = pct + '%'; document.getElementById('progress-percent').textContent = pct + '%'; document.getElementById('current-name').textContent = name || '—'; document.getElementById('loaded-count').textContent = loaded; document.getElementById('total-count').textContent = total; }
+        function openModal(id){const m=document.getElementById(id);m.style.display='flex';setTimeout(()=>m.classList.add('show'),10);}
+        function closeModal(){close_('modal');} function closeModalTable(){close_('modal-table');} function close_(id){const m=document.getElementById(id);m.classList.remove('show');setTimeout(()=>m.style.display='none',180);}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeModalTable();}});
+        function escapeHtml(s){return!s?'':String(s).replace(/&/g,'&amp;').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+        const toggleButton=document.getElementById('theme-toggle'),themeIcon=document.getElementById('theme-icon'),body=document.body;
+        function enableDarkMode(){body.classList.add('dark-mode');themeIcon.textContent='☀️';localStorage.setItem('theme','dark');} function disableDarkMode(){body.classList.remove('dark-mode');themeIcon.textContent='🌙';localStorage.setItem('theme','light');} function toggleTheme(){body.classList.contains('dark-mode')?disableDarkMode():enableDarkMode();}
+        const userTheme=localStorage.getItem('theme'); if(userTheme==='dark')enableDarkMode();else if(userTheme==='light')disableDarkMode();else if(window.matchMedia('(prefers-color-scheme: dark)').matches)enableDarkMode();
+        toggleButton.addEventListener('click',toggleTheme);
+    </script>
 </body>
 </html>
