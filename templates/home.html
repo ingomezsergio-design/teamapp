@@ -20,17 +20,21 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: var(--text-color);
-            transition: background 1s ease-in-out;
+            background-color: var(--background-color); /* Fondo sólido como fallback */
             overflow: hidden;
         }
 
-        /* --- Estructura de Pantallas --- */
+        /* Contenedor para la animación de fondo */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Se asegura que esté detrás de todo */
+        }
+
         .screen {
             position: absolute;
             inset: 0;
@@ -50,8 +54,6 @@
             display: flex;
             opacity: 1;
         }
-
-        /* --- Pantalla de Bloqueo --- */
         .avatar {
             width: 100px;
             height: 100px;
@@ -70,8 +72,6 @@
             font-weight: 300;
             margin-bottom: 2rem;
         }
-
-        /* --- Contenido General (Títulos, Botones, Tarjetas) --- */
         h1 {
             margin-bottom: 2rem;
             font-size: 2rem;
@@ -92,14 +92,12 @@
             transition: transform 0.2s ease, background-color 0.2s ease;
             margin: 8px;
             text-decoration: none;
-            min-width: 220px; /* Ancho mínimo para consistencia */
+            min-width: 220px;
         }
         .button:hover, a.button:hover {
             background: #fff;
             transform: scale(1.05);
         }
-
-        /* --- Tarjetas de Actualización --- */
         #updatesContainer {
             width: min(600px, 90vw);
         }
@@ -135,8 +133,6 @@
             cursor: pointer;
             font-weight: 600;
         }
-
-        /* Contenedor para Pestañas (Sección Info) */
         .tab-container {
             display: flex;
             gap: 10px;
@@ -151,13 +147,14 @@
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <div class="screen active" id="lock">
         <div class="avatar"></div>
         <div class="time" id="clock">00:00</div>
         <div class="date" id="date">DD/MM/YYYY</div>
         <button class="button" onclick="showScreen('main')">Ingresar</button>
     </div>
-
     <div class="screen" id="main">
         <h1>MENÚ PRINCIPAL</h1>
         <button class="button" onclick="showScreen('updates')">📌 Actualizaciones</button>
@@ -165,13 +162,11 @@
         <button class="button" onclick="showScreen('other')">⚙ Otras secciones</button>
         <button class="button" onclick="showScreen('lock')">🔒 Bloquear</button>
     </div>
-
     <div class="screen" id="updates">
         <h1>ACTUALIZACIONES</h1>
         <div id="updatesContainer"></div>
         <button class="button" onclick="showScreen('main')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="other">
         <h1>OTRAS SECCIONES</h1>
         <button class="button" onclick="showScreen('metrics')">📊 Métricas</button>
@@ -182,23 +177,20 @@
         <button class="button" onclick="showScreen('otros')">📂 Otros</button>
         <button class="button" onclick="showScreen('main')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="metrics">
         <h1>MÉTRICAS</h1>
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbwhb-DdP05OuHOpBJfWP3Q1lL6PBF7-vUJbo3Qgfdz-vlEvoHRXUvnpflDqVohMQOF5/exec')">📊 Métricas Yoizen</button>
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbwjc1-Mzayi9N6lBDLpUYxgzNB9OtyMAlkq5rmV3U0BhQVIobdVEK-nULYuuw6yqkfC/exec')">💾 Data de Métricas</button>
-        <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbxnPa6FbbHxzIQOnVJzSG1neKOoiDtC5sryik9AwinOIkS8VSy1J1-RYZq_N4jIH-lH/exec')">📊 Métricas PIC</button>
+        <a class="button" href="{{ url_for('metricas_pic') }}">📊 Métricas PIC</a>
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycb-GB0CQyBwXs0BzGBSgxMD7LlPdcUeLLqJ63O7QgQ66bnXffrwo1YEa3wgwwL4UvM2/exec')">🎯 Eqas</button>
         <button class="button" onclick="showScreen('pdas')">📈 PDA Proyecciones</button>
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="pdas">
         <h1>PDA Proyecciones</h1>
         <button class="button" onclick="openExternal('https://script.google.com/a/macros/apexamerica.com/s/AKfycbyefLqsq3XEETgqGTIetqngmCGuhyIRyl2M4PmiNVku-oxGycT1cxrmMBR4T4odaGsleQ/exec')">PDA Proyección Agosto</button>
         <button class="button" onclick="showScreen('metrics')">🔙 Volver a Métricas</button>
     </div>
-
     <div class="screen" id="horario">
         <h1>HORARIO</h1>
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbxsQ9PKXPJAEnkCEBPQ-kr0SI1cI6g6Gd8JZBnIb-ry6jkq1PfUIj6fOYSMjpgR4-cH/exec')">Conexiones</button>
@@ -208,7 +200,6 @@
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycbydTL-xJQTR6VmwMubMS13gNjBd2vDcj6tAJtYm9dR627nJPHjI-SEYV7TDSGlB8pwg/exec')">Matriz Septiembre</button>
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="links">
         <h1>Links Apex</h1>
         <button class="button" onclick="openExternal('https://apex.wayfromhome.cx/')">🏠 ApexWay</button>
@@ -217,13 +208,11 @@
         <button class="button" onclick="openExternal('https://jobs.apexamerica.com/')">💼 Postulaciones</button>
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
-    
     <div class="screen" id="planillas">
         <h1>Planillas</h1>
         <button class="button" onclick="openExternal('https://script.google.com/macros/s/AKfycby2ecXABysuhxbq_1Pm3x092ydx12MwtG8JLMMsIGEDx-n-VGuDQNRMMQ57IKh1eGNMKw/exec')">Planillas FAN/OPEN</button>
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="otros">
         <h1>Otros</h1>
         <button class="button" onclick="openExternal('https://sites.google.com/apexamerica.com/gsa/mas/otros/vacaciones?authuser=0/')">🌴 Vacaciones</button>
@@ -232,7 +221,6 @@
         <button class="button" onclick="openExternal('https://app.slack.com/client/T07H1PA89ML/C07KM5CPBL4')">💬 Slack Team</button>
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
-
     <div class="screen" id="info">
         <h1>INFO</h1>
         <div class="tab-container">
@@ -248,77 +236,29 @@
         <button class="button" onclick="showScreen('other')">🔙 Volver</button>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // --- INICIALIZACIÓN DE PARTÍCULAS ---
+        particlesJS("particles-js", {
+            "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } } },
+            "retina_detect": true
+        });
+
+        // --- Lógica del Panel (sin cambios) ---
         document.addEventListener('DOMContentLoaded', () => {
             renderUpdates();
             updateClock();
             setInterval(updateClock, 1000);
         });
-
         const screens = document.querySelectorAll(".screen");
-        function showScreen(id) {
-            screens.forEach(s => s.classList.remove("active"));
-            const activeScreen = document.getElementById(id);
-            if(activeScreen) {
-                activeScreen.classList.add("active");
-            }
-        }
-
-        function updateClock() {
-            const now = new Date();
-            const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
-            document.getElementById("clock").textContent = now.toLocaleTimeString([], timeOptions);
-            document.getElementById("date").textContent = now.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        }
-
-        function openExternal(url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function toggleTooltip(element) {
-            element.classList.toggle("active");
-        }
-        
-        // Función para manejar las pestañas en la sección "Info"
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-            const activeTab = document.getElementById(tabId + "Tab");
-            if(activeTab) {
-                activeTab.style.display = 'flex';
-            }
-        }
-
-        // Datos de actualizaciones (simulando la llamada a getUpdates())
-        const updatesData = [
-            { titulo: "MÉTRICAS YOIZEN", horario: "8:30 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbwhb-DdP05OuHOpBJfWP3Q1lL6PBF7-vUJbo3Qgfdz-vlEvoHRXUvnpflDqVohMQOF5/exec" },
-            { titulo: "CONEXIONES", horario: "11:00 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbxsQ9PKXPJAEnkCEBPQ-kr0SI1cI6g6Gd8JZBnIb-ry6jkq1PfUIj6fOYSMjpgR4-cH/exec" },
-            { titulo: "DEUDA", horario: "12:00 PM", frecuencia: "Lunes a Viernes", link: "https://sites.google.com/apexamerica.com/gsa/ausbreaks-deuda?authuser=0" },
-            { titulo: "EQAs", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycb-GB0CQyBwXs0BzGBSgxMD7LlPdcUeLLqJ63O7QgQ66bnXffrwo1YEa3wgwwL4UvM2/exec" },
-            { titulo: "Cambios", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycbxt_duTWTOgTSZfVE_PkjLp-1E-z6bYPLqRBdtq-EWfIzpLbu458F4UxpsWSyvuvojA/exec" }
-        ];
-
-        function renderUpdates() {
-            const container = document.getElementById("updatesContainer");
-            if (!container) return;
-            container.innerHTML = "";
-            updatesData.forEach(item => {
-                const card = document.createElement("div");
-                card.className = "card";
-                card.innerHTML = `
-                    <div style="font-weight: 600;">${item.titulo}</div>
-                    <div style="font-size: 0.9em; color: #94a3b8;">${item.horario} (${item.frecuencia})</div>
-                    <div class="tooltip">
-                        ${item.link 
-                            ? `📄 Accede desde <span class="detail-link" onclick="event.stopPropagation(); openExternal('${item.link}')">aquí</span>.`
-                            : "📢 Información enviada por Slack."
-                        }
-                    </div>
-                `;
-                card.onclick = () => toggleTooltip(card);
-                container.appendChild(card);
-            });
-        }
+        function showScreen(id) { screens.forEach(s => s.classList.remove("active")); const el = document.getElementById(id); if(el) el.classList.add("active"); }
+        function updateClock() { const now = new Date(); document.getElementById("clock").textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false }); document.getElementById("date").textContent = now.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); }
+        function openExternal(url) { window.open(url, '_blank', 'noopener,noreferrer'); }
+        function toggleTooltip(element) { element.classList.toggle("active"); }
+        function showTab(tabId) { document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none'); const el = document.getElementById(tabId + "Tab"); if(el) el.style.display = 'flex'; }
+        const updatesData = [ { titulo: "MÉTRICAS YOIZEN", horario: "8:30 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbwhb-DdP05OuHOpBJfWP3Q1lL6PBF7-vUJbo3Qgfdz-vlEvoHRXUvnpflDqVohMQOF5/exec" }, { titulo: "CONEXIONES", horario: "11:00 AM", frecuencia: "Lunes a Viernes", link: "https://script.google.com/macros/s/AKfycbxsQ9PKXPJAEnkCEBPQ-kr0SI1cI6g6Gd8JZBnIb-ry6jkq1PfUIj6fOYSMjpgR4-cH/exec" }, { titulo: "DEUDA", horario: "12:00 PM", frecuencia: "Lunes a Viernes", link: "https://sites.google.com/apexamerica.com/gsa/ausbreaks-deuda?authuser=0" }, { titulo: "EQAs", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycb-GB0CQyBwXs0BzGBSgxMD7LlPdcUeLLqJ63O7QgQ66bnXffrwo1YEa3wgwwL4UvM2/exec" }, { titulo: "Cambios", horario: "Tiempo Real", frecuencia: "Siempre", link: "https://script.google.com/macros/s/AKfycbxt_duTWTOgTSZfVE_PkjLp-1E-z6bYPLqRBdtq-EWfIzpLbu458F4UxpsWSyvuvojA/exec" } ];
+        function renderUpdates() { const c = document.getElementById("updatesContainer"); if (!c) return; c.innerHTML = ""; updatesData.forEach(item => { const card = document.createElement("div"); card.className = "card"; card.innerHTML = `<div style="font-weight: 600;">${item.titulo}</div><div style="font-size: 0.9em; color: #94a3b8;">${item.horario} (${item.frecuencia})</div><div class="tooltip">${item.link ? `📄 Accede desde <span class="detail-link" onclick="event.stopPropagation(); openExternal('${item.link}')">aquí</span>.` : "📢 Información enviada por Slack."}</div>`; card.onclick = () => toggleTooltip(card); c.appendChild(card); }); }
     </script>
 </body>
 </html>
