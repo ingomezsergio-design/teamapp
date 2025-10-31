@@ -15,10 +15,6 @@ CACHE_DURATION = 120  # 2 minutos
 
 # --- Función Unificada para Leer Datos de Google Sheets ---
 def get_sheet_data(sheet_name):
-    """
-    Función centralizada que obtiene datos de cualquier hoja.
-    Usa un cache para mejorar el rendimiento.
-    """
     current_time = time.time()
     cache_key = f"sheet_{sheet_name}"
 
@@ -45,18 +41,14 @@ def get_sheet_data(sheet_name):
     rows_with_colors = []
 
     if 'rowData' in grid_data:
-        # Procesar encabezados
         if len(grid_data['rowData']) > 0:
             header_row_data = grid_data['rowData'][0].get('values', [])
             headers = [cell.get('formattedValue', '') for cell in header_row_data]
 
-        # Procesar filas de datos
         if len(grid_data['rowData']) > 1:
             for row_data in grid_data['rowData'][1:]:
                 row_values = row_data.get('values', [])
                 
-                # --- AJUSTE CLAVE: IGNORAR FILAS VACÍAS ---
-                # Si la fila no tiene celdas o todas sus celdas están vacías, la saltamos.
                 if not any(cell.get('formattedValue', '').strip() for cell in row_values):
                     continue
 
@@ -72,7 +64,6 @@ def get_sheet_data(sheet_name):
                     b = int(bg_color_map.get('blue', 1) * 255)
                     colors_list.append(f'#{r:02x}{g:02x}{b:02x}')
                 
-                # Asegurarse de que la fila tenga la misma longitud que los encabezados
                 while len(values_list) < len(headers):
                     values_list.append('')
                 while len(colors_list) < len(headers):
@@ -103,12 +94,17 @@ def agentes():
 def metricas_pic():
     return render_template("metricas_pic.html")
 
+# --- NUEVA RUTA para la Matriz de Noviembre ---
+@app.route("/matriz-noviembre")
+def matriz_noviembre():
+    return render_template("matriz_noviembre.html")
+
 # --- Endpoints de API ---
 @app.route("/api/agents/meta")
 def api_agents_meta():
     try:
         data = get_sheet_data("Agentes")
-        return jsonify({"headers": data["headers"], "total": len(data["rows"]), "version": data["version"]})
+        return jsonify({"headers": data["headers"], "total": len(data["rows"])})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -126,8 +122,7 @@ def api_agents_chunk():
             "colors": [],
             "start": start,
             "end": end,
-            "total": total,
-            "version": data["version"]
+            "total": total
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -138,7 +133,23 @@ def api_metricas_pic_data():
         data = get_sheet_data("Metricas PIC")
         return jsonify({"headers": data["headers"], "rows": data["rows_with_colors"]})
     except Exception as e:
-        print(f"Error en api_metricas_pic_data: {e}")
+        return jsonify({"error": str(e)}), 500
+
+# --- NUEVO ENDPOINT DE API para la Matriz de Noviembre ---
+@app.route("/api/matriz-noviembre/data")
+def api_matriz_noviembre_data():
+    try:
+        data = get_sheet_data("MES11")
+        # Devolvemos los datos en el formato que espera el nuevo HTML
+        return jsonify({
+            "headers": data["headers"],
+            "rows": data["rows"],
+            "colors": [
+                [cell['color'] for cell in row] for row in data['rows_with_colors']
+            ]
+        })
+    except Exception as e:
+        print(f"Error en api_matriz_noviembre_data: {e}")
         return jsonify({"error": str(e)}), 500
 
 # --- Lógica para correr la app ---
