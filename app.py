@@ -1,84 +1,86 @@
 import os
 import time
 from flask import Flask, render_template, jsonify, request
-import gspread
 from google.oauth2.service_account import Credentials
-# --- NUEVA LIBRERÍA IMPORTADA ---
 from googleapiclient.discovery import build
 
-# --- Configuración de la App y Cache ---
+# --- Configuración de la App ---
 app = Flask(__name__)
-# Añadimos más permisos para que la API V4 pueda leer el formato
-SCOPES = [
-    "https://www.googleapis.com/auth/spreadsheets.readonly",
-    "https://www.googleapis.com/auth/drive.readonly"
-]
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "1Iowck5rzr8gjIZwLCQazg1eNktoW6RQ9fmGnKoPNIyE")
 
-sheet_cache = {
-    "data": None,
-    "timestamp": 0
-}
-CACHE_DURATION = 120
+# --- Cache en memoria para los datos ---
+cache = {}
+CACHE_DURATION = 120  # 2 minutos
 
-# --- Funciones de Lógica ---
-def get_gspread_client():
+# --- Función Unificada para Leer Datos de Google Sheets ---
+def get_sheet_data(sheet_name):
+    """
+    Función centralizada que obtiene datos de cualquier hoja.
+    Usa un cache para mejorar el rendimiento.
+    """
+    current_time = time.time()
+    cache_key = f"sheet_{sheet_name}"
+
+    # Si hay un cache válido, lo devolvemos
+    if cache_key in cache and (current_time - cache[cache_key]["timestamp"] < CACHE_DURATION):
+        return cache[cache_key]["data"]
+
+    # Si no, procedemos a leer desde la API de Google
     creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "service-account.json")
     if not os.path.exists(creds_path):
         raise FileNotFoundError(f"No se encontró el archivo de credenciales: {creds_path}")
-    creds = Credentials.from_service_account_file(creds_path, scopes=SCOPES)
-    return gspread.authorize(creds)
-
-# --- NUEVA FUNCIÓN PARA OBTENER DATOS CON COLORES ---
-def get_sheet_data_with_colors(spreadsheet_id, sheet_name):
-    """
-    Usa la API de Google Sheets v4 para obtener valores Y colores de fondo.
-    """
-    creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "service-account.json")
-    creds = Credentials.from_service_account_file(creds_path, scopes=SCOPES)
     
+    creds = Credentials.from_service_account_file(creds_path, scopes=SCOPES)
     service = build('sheets', 'v4', credentials=creds)
     sheet_api = service.spreadsheets()
 
-    # Petición a la API pidiendo explícitamente los valores y el formato de color de fondo
     result = sheet_api.get(
-        spreadsheetId=spreadsheet_id,
+        spreadsheetId=SPREADSHEET_ID,
         ranges=[sheet_name],
         includeGridData=True
     ).execute()
 
     grid_data = result['sheets'][0]['data'][0]
     headers = []
+    rows = []
     rows_with_colors = []
 
-    # Procesar la primera fila (encabezados)
+    # Procesar encabezados
     if 'rowData' in grid_data and len(grid_data['rowData']) > 0:
-        header_row = grid_data['rowData'][0]
-        if 'values' in header_row:
-            headers = [cell.get('formattedValue', '') for cell in header_row['values']]
+        header_row_data = grid_data['rowData'][0].get('values', [])
+        headers = [cell.get('formattedValue', '') for cell in header_row_data]
 
-    # Procesar el resto de las filas
+    # Procesar filas
     if 'rowData' in grid_data and len(grid_data['rowData']) > 1:
         for row_data in grid_data['rowData'][1:]:
-            row_list = []
-            if 'values' in row_data:
-                for cell in row_data['values']:
-                    # Extraemos el color de la celda
-                    bg_color_map = cell.get('effectiveFormat', {}).get('backgroundColor', {})
-                    # Convertimos el color de formato RGBA de la API a un string hexadecimal CSS
-                    hex_color = '#FFFFFF' # Blanco por defecto
-                    if 'red' in bg_color_map or 'green' in bg_color_map or 'blue' in bg_color_map:
-                        r = int(bg_color_map.get('red', 0) * 255)
-                        g = int(bg_color_map.get('green', 0) * 255)
-                        b = int(bg_color_map.get('blue', 0) * 255)
-                        hex_color = f'#{r:02x}{g:02x}{b:02x}'
-                    
-                    row_list.append({
-                        "value": cell.get('formattedValue', ''),
-                        "color": hex_color
-                    })
-            rows_with_colors.append(row_list)
+            values_list = []
+            colors_list = []
+            
+            row_values = row_data.get('values', [])
+            for cell in row_values:
+                # Extraer valor
+                values_list.append(cell.get('formattedValue', ''))
+                
+                # Extraer color
+                bg_color_map = cell.get('effectiveFormat', {}).get('backgroundColor', {})
+                r = int(bg_color_map.get('red', 1) * 255)
+                g = int(bg_color_map.get('green', 1) * 255)
+                b = int(bg_color_map.get('blue', 1) * 255)
+                colors_list.append(f'#{r:02x}{g:02x}{b:02x}')
+            
+            rows.append(values_list)
+            rows_with_colors.append([{"value": v, "color": c} for v, c in zip(values_list, colors_list)])
 
-    return {"headers": headers, "rows": rows_with_colors}
+    # Guardar los datos en el cache antes de devolverlos
+    snapshot = {
+        "headers": headers,
+        "rows": rows,
+        "rows_with_colors": rows_with_colors,
+        "version": str(current_time)
+    }
+    cache[cache_key] = {"data": snapshot, "timestamp": current_time}
+    return snapshot
 
 # --- Rutas de la Interfaz ---
 @app.route("/")
@@ -93,19 +95,42 @@ def agentes():
 def metricas_pic():
     return render_template("metricas_pic.html")
 
-# --- Endpoints de API existentes (sin cambios) ---
-# ... (aquí van tus endpoints /api/agents/meta y /api/agents/chunk) ...
+# --- Endpoints de API ---
 
-# --- MODIFICAMOS EL ENDPOINT DE MÉTRICAS PIC ---
+@app.route("/api/agents/meta")
+def api_agents_meta():
+    try:
+        data = get_sheet_data("Agentes")
+        return jsonify({"headers": data["headers"], "total": len(data["rows"]), "version": data["version"]})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/api/agents/chunk")
+def api_agents_chunk():
+    try:
+        start = int(request.args.get('start', 0))
+        size = int(request.args.get('size', 200))
+        data = get_sheet_data("Agentes")
+        total = len(data["rows"])
+        end = min(total, start + size)
+        
+        return jsonify({
+            "rows": data["rows"][start:end],
+            "colors": [], # La página de agentes no usa colores, devolvemos array vacío
+            "start": start,
+            "end": end,
+            "total": total,
+            "version": data["version"]
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/api/metricas-pic/data")
 def api_metricas_pic_data():
-    """ Ahora llama a la nueva función que obtiene colores. """
     try:
-        ss_id = os.getenv("SPREADSHEET_ID", "1Iowck5rzr8gjIZwLCQazg1eNktoW6RQ9fmGnKoPNIyE")
-        data = get_sheet_data_with_colors(ss_id, 'Metricas PIC')
-        return jsonify(data)
+        data = get_sheet_data("Metricas PIC")
+        return jsonify({"headers": data["headers"], "rows": data["rows_with_colors"]})
     except Exception as e:
-        # Importante: imprimir el error en la consola del servidor para depuración
         print(f"Error en api_metricas_pic_data: {e}")
         return jsonify({"error": str(e)}), 500
 
