@@ -8,10 +8,14 @@
         :root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
         *{ box-sizing:border-box }
         body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
-        .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
+        
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+        .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; position:relative; z-index:1;}
         h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
         .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
+        /* ... (El resto de tu CSS va aquí, sin cambios) ... */
         table{ width:100%; border-collapse:collapse; font-size:13px; }
         thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
         th,td{ border-bottom:1px solid #1f2937; padding:6px 8px; white-space:nowrap; }
@@ -34,11 +38,12 @@
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
     <div class="wrap">
-        <h1>Metricas PIC</h1>
+         <h1>Metricas PIC</h1>
         <div class="hint">Fuente: Google Sheet (Metricas PIC)</div>
         <input id="search" placeholder="Filtrar desde la fila 3..." />
-        
         <div id="content" class="card">
             <div class="loader">
                 <div class="dot"></div>
@@ -47,51 +52,17 @@
             </div>
             <div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">Cargando datos...</div>
         </div>
-
         <a href="{{ url_for('home') }}" class="back-button">⬅ Volver al Panel</a>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Llama a la nueva API de Flask al cargar la página
-        fetch('/api/metricas-pic/data')
-            .then(response => response.json())
-            .then(render)
-            .catch(error => {
-                console.error("Error al cargar los datos:", error);
-                document.getElementById('content').innerHTML = `<div class="empty">Error al cargar los datos: ${error.message}</div>`;
-            });
-
-        function render(data){
-            const el = document.getElementById('content');
-            const { headers, rows } = data || {};
-            if (!headers || headers.length === 0) {
-                el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>';
-                return;
-            }
-
-            const thead = '<thead><tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr></thead>';
-            // Se eliminó la lógica de colores, la tabla usará los estilos CSS por defecto
-            const tbody = '<tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${escapeHtml(c)}</td>`).join('') + '</tr>').join('') + '</tbody>';
-
-            el.classList.add('table-wrap');
-            el.innerHTML = `<table>${thead}${tbody}</table>`;
-
-            const searchInput = document.getElementById('search');
-            searchInput.addEventListener('input', function(){
-                const filter = this.value.toLowerCase();
-                const rowsEl = el.querySelectorAll('tbody tr');
-                rowsEl.forEach((row, index) => {
-                    // Mantenemos la lógica de filtrar a partir de la 3ra fila
-                    if(index < 2) return; 
-                    const text = row.innerText.toLowerCase();
-                    row.style.display = text.includes(filter) ? '' : 'none';
-                });
-            });
-        }
-
-        function escapeHtml(s){
-            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-        }
+        particlesJS("particles-js", { "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } } }, "retina_detect": true });
+        
+        // --- El resto de tu script de métricas va aquí, sin cambios ---
+        fetch('/api/metricas-pic/data').then(response => response.json()).then(render).catch(error => { console.error("Error al cargar los datos:", error); document.getElementById('content').innerHTML = `<div class="empty">Error al cargar los datos: ${error.message}</div>`; });
+        function render(data){ const el = document.getElementById('content'); const { headers, rows } = data || {}; if (!headers || headers.length === 0) { el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>'; return; } const thead = '<thead><tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr></thead>'; const tbody = '<tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${escapeHtml(c)}</td>`).join('') + '</tr>').join('') + '</tbody>'; el.classList.add('table-wrap'); el.innerHTML = `<table>${thead}${tbody}</table>`; const searchInput = document.getElementById('search'); searchInput.addEventListener('input', function(){ const filter = this.value.toLowerCase(); const rowsEl = el.querySelectorAll('tbody tr'); rowsEl.forEach((row, index) => { if(index < 2) return; const text = row.innerText.toLowerCase(); row.style.display = text.includes(filter) ? '' : 'none'; }); }); }
+        function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
     </script>
 </body>
 </html>
