@@ -6,14 +6,18 @@ from googleapiclient.discovery import build
 
 # --- Configuración de la App ---
 app = Flask(__name__)
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+# --- CORRECCIÓN: Añadimos el permiso 'drive.readonly' que es necesario ---
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/drive.readonly"
+]
 SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "1Iowck5rzr8gjIZwLCQazg1eNktoW6RQ9fmGnKoPNIyE")
 
 # --- Cache en memoria para los datos ---
 cache = {}
 CACHE_DURATION = 120  # 2 minutos
 
-# --- Función Unificada para Leer Datos de Google Sheets ---
+# --- Función Unificada y Mejorada para Leer Datos ---
 def get_sheet_data(sheet_name):
     current_time = time.time()
     cache_key = f"sheet_{sheet_name}"
@@ -34,6 +38,13 @@ def get_sheet_data(sheet_name):
         ranges=[sheet_name],
         includeGridData=True
     ).execute()
+
+    # --- Lógica más robusta para evitar errores si la hoja está vacía ---
+    if not result['sheets'][0].get('data'):
+        # Si la hoja no tiene datos, devolvemos una estructura vacía
+        empty_snapshot = {"headers": [], "rows": [], "rows_with_colors": [], "version": str(current_time)}
+        cache[cache_key] = {"data": empty_snapshot, "timestamp": current_time}
+        return empty_snapshot
 
     grid_data = result['sheets'][0]['data'][0]
     headers = []
@@ -81,7 +92,7 @@ def get_sheet_data(sheet_name):
     cache[cache_key] = {"data": snapshot, "timestamp": current_time}
     return snapshot
 
-# --- Rutas de la Interfaz ---
+# --- Rutas de la Interfaz (sin cambios) ---
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -94,17 +105,16 @@ def agentes():
 def metricas_pic():
     return render_template("metricas_pic.html")
 
-# --- NUEVA RUTA para la Matriz de Noviembre ---
 @app.route("/matriz-noviembre")
 def matriz_noviembre():
     return render_template("matriz_noviembre.html")
 
-# --- Endpoints de API ---
+# --- Endpoints de API (sin cambios) ---
 @app.route("/api/agents/meta")
 def api_agents_meta():
     try:
         data = get_sheet_data("Agentes")
-        return jsonify({"headers": data["headers"], "total": len(data["rows"])})
+        return jsonify({"headers": data["headers"], "total": len(data["rows"]), "version": data["version"]})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -122,7 +132,8 @@ def api_agents_chunk():
             "colors": [],
             "start": start,
             "end": end,
-            "total": total
+            "total": total,
+            "version": data["version"]
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -135,12 +146,10 @@ def api_metricas_pic_data():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# --- NUEVO ENDPOINT DE API para la Matriz de Noviembre ---
 @app.route("/api/matriz-noviembre/data")
 def api_matriz_noviembre_data():
     try:
         data = get_sheet_data("MES11")
-        # Devolvemos los datos en el formato que espera el nuevo HTML
         return jsonify({
             "headers": data["headers"],
             "rows": data["rows"],
@@ -149,7 +158,6 @@ def api_matriz_noviembre_data():
             ]
         })
     except Exception as e:
-        print(f"Error en api_matriz_noviembre_data: {e}")
         return jsonify({"error": str(e)}), 500
 
 # --- Lógica para correr la app ---
