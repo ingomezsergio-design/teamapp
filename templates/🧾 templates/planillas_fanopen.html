@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrap">
+  <h1>Planillas FAN/OPEN</h1>
+  <div class="hint">Fuente: Google Sheet (Planillas)</div>
+  <input id="search" placeholder="Buscar (Ctrl + F)..." />
+  <div style="margin-bottom:8px;">
+    <button id="prevResult">⬆ Anterior</button>
+    <button id="nextResult">⬇ Siguiente</button>
+    <span id="resultCount">0 resultados</span>
+  </div>
+
+  <div id="content" class="card">
+    <div class="loader">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">
+      Cargando datos...
+    </div>
+  </div>
+</div>
+
+<script>
+let searchMatches = [], currentMatch = -1;
+
+fetch('/api/planillas')
+  .then(res => res.json())
+  .then(data => render(data));
+
+function render(data) {
+  const el = document.getElementById('content');
+  const { headers, rows } = data;
+  if (!headers || headers.length === 0) {
+    el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>';
+    return;
+  }
+  const thead = '<thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead>';
+  const tbody = '<tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody>';
+  el.classList.add('table-wrap');
+  el.innerHTML = `<table>${thead}${tbody}</table>`;
+}
+</script>
+{% endblock %}
