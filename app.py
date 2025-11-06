@@ -122,6 +122,10 @@ def api_metricas_pic_data():
 def api_matriz_noviembre_data():
     return create_api_response(lambda: {"headers": get_sheet_data("MES11")["headers"], "rows": get_sheet_data("MES11")["rows_with_colors"]})
 
+@app.route('/health')
+def health_check():
+    return "OK", 200
+
 # --- Run the App ---
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8080)), debug=True)
