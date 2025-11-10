@@ -1,60 +1,57 @@
-:root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
-*{ box-sizing:border-box }
-body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
-        
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-
-        .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; position:relative; z-index:1;}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Metricas PIC - TeamApp</title>
+    <style>
+        :root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
+        *{ box-sizing:border-box }
+        body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
         .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
-h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
-.card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-.card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
-        /* ... (El resto de tu CSS va aquí, sin cambios) ... */
-table{ width:100%; border-collapse:collapse; font-size:13px; }
-thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
-        th,td{ border-bottom:1px solid #1f2937; padding:6px 8px; white-space:nowrap; }
-        tr:hover td { background: rgba(14,165,164,0.15); transition: background 0.3s ease; }
+        h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
+        .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
+        table{ width:100%; border-collapse:collapse; font-size:13px; }
+        thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
         th,td{ border-bottom:1px solid #1f2en-US: 937; padding:6px 8px; white-space:nowrap; }
         tr:hover td { background: rgba(14,165,164,0.15) !important; /* !important para sobreescribir el estilo en línea */ transition: background 0.3s ease; }
-.hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
-        .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; scrollbar-width: thin; scrollbar-color: var(--accent) #0b1220; }
-        thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 4; font-size: 11px; background: #111827; }
+        .hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
         .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; }
         thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 4; font-size: 11px; }
         thead th:first-child { background: #111827; }
-tbody td:first-child { background: #0f172a; z-index: 2; }
-.empty{ padding:16px; text-align:center; color:var(--muted) }
-input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
-@@ -34,16 +31,14 @@
-.loader .dot:nth-child(2) { animation-delay: 0.2s; }
-.loader .dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes bounce { 0% { transform: translateY(0); opacity: 0.6; } 100% { transform: translateY(-12px); opacity: 1; } }
-        @media (max-width: 480px){ thead th:first-child, tbody td:first-child { font-size: 9px; } table{ font-size:12px; } th,td{ padding:4px 6px; } .wrap{ padding:4px; } .card{ padding:4px; } input#search{ padding:4px; } .back-button{ padding:8px 14px; font-size:1rem; } }
-</style>
+        tbody td:first-child { background: #0f172a; z-index: 2; }
+        .empty{ padding:16px; text-align:center; color:var(--muted) }
+        input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
+        input#search:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent, #0ea5a4); }
+        .back-button { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: #fff; padding: 12px 22px; text-align: center; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 10px; transition: 0.3s; margin: 10px auto 0 auto; border: 1px solid rgba(255,255,255,0.2); width: max-content; }
+        .back-button:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+        .loader { display: flex; justify-content: center; align-items: center; padding: 40px 0; }
+        .loader .dot { width: 12px; height: 12px; margin: 0 6px; background: var(--accent); border-radius: 50%; animation: bounce 0.6s infinite alternate; }
+        .loader .dot:nth-child(2) { animation-delay: 0.2s; }
+        .loader .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce { 0% { transform: translateY(0); opacity: 0.6; } 100% { transform: translateY(-12px); opacity: 1; } }
+    </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    
-<div class="wrap">
-         <h1>Metricas PIC</h1>
+    <div class="wrap">
         <h1>Metricas PIC</h1>
-<div class="hint">Fuente: Google Sheet (Metricas PIC)</div>
-<input id="search" placeholder="Filtrar desde la fila 3..." />
+        <div class="hint">Fuente: Google Sheet (Metricas PIC)</div>
+        <input id="search" placeholder="Filtrar desde la fila 3..." />
         
-<div id="content" class="card">
-<div class="loader">
-<div class="dot"></div>
-@@ -52,17 +47,70 @@ <h1>Metricas PIC</h1>
-</div>
-<div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">Cargando datos...</div>
-</div>
+        <div id="content" class="card">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">Cargando datos...</div>
+        </div>
 
-<a href="{{ url_for('home') }}" class="back-button">⬅ Volver al Panel</a>
-</div>
+        <a href="{{ url_for('home') }}" class="back-button">⬅ Volver al Panel</a>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-        particlesJS("particles-js", { "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } } }, "retina_detect": true });
+    <script>
         // La llamada fetch sigue siendo la misma, pero ahora esperamos datos con colores
         fetch('/api/metricas-pic/data')
             .then(response => response.json())
@@ -102,11 +99,7 @@ input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; bo
         function escapeHtml(s){
             return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
         }
-
-        // --- El resto de tu script de métricas va aquí, sin cambios ---
-        fetch('/api/metricas-pic/data').then(response => response.json()).then(render).catch(error => { console.error("Error al cargar los datos:", error); document.getElementById('content').innerHTML = `<div class="empty">Error al cargar los datos: ${error.message}</div>`; });
-        function render(data){ const el = document.getElementById('content'); const { headers, rows } = data || {}; if (!headers || headers.length === 0) { el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>'; return; } const thead = '<thead><tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr></thead>'; const tbody = '<tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${escapeHtml(c)}</td>`).join('') + '</tr>').join('') + '</tbody>'; el.classList.add('table-wrap'); el.innerHTML = `<table>${thead}${tbody}</table>`; const searchInput = document.getElementById('search'); searchInput.addEventListener('input', function(){ const filter = this.value.toLowerCase(); const rowsEl = el.querySelectorAll('tbody tr'); rowsEl.forEach((row, index) => { if(index < 2) return; const text = row.innerText.toLowerCase(); row.style.display = text.includes(filter) ? '' : 'none'; }); }); }
-        function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
+        
         // --- FUNCIÓN NUEVA para calcular el contraste del texto ---
         function getContrastYIQ(hexcolor){
             if(!hexcolor) return '#e2e8f0'; // Color de texto por defecto
@@ -118,6 +111,6 @@ input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; bo
             // Si el fondo es oscuro, devuelve texto claro. Si es claro, devuelve texto oscuro.
             return (yiq >= 128) ? '#111827' : '#f8fafc';
         }
-</script>
+    </script>
 </body>
 </html>
