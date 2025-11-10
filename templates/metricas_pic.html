@@ -1,116 +1,126 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Metricas PIC - TeamApp</title>
-    <style>
-        :root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
-        *{ box-sizing:border-box }
-        body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
-        .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
-        h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
-        .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
-        table{ width:100%; border-collapse:collapse; font-size:13px; }
-        thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
-        th,td{ border-bottom:1px solid #1f2en-US: 937; padding:6px 8px; white-space:nowrap; }
-        tr:hover td { background: rgba(14,165,164,0.15) !important; /* !important para sobreescribir el estilo en línea */ transition: background 0.3s ease; }
-        .hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
-        .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; }
-        thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 4; font-size: 11px; }
-        thead th:first-child { background: #111827; }
-        tbody td:first-child { background: #0f172a; z-index: 2; }
-        .empty{ padding:16px; text-align:center; color:var(--muted) }
-        input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
-        input#search:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent, #0ea5a4); }
-        .back-button { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: #fff; padding: 12px 22px; text-align: center; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 10px; transition: 0.3s; margin: 10px auto 0 auto; border: 1px solid rgba(255,255,255,0.2); width: max-content; }
-        .back-button:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
-        .loader { display: flex; justify-content: center; align-items: center; padding: 40px 0; }
-        .loader .dot { width: 12px; height: 12px; margin: 0 6px; background: var(--accent); border-radius: 50%; animation: bounce 0.6s infinite alternate; }
-        .loader .dot:nth-child(2) { animation-delay: 0.2s; }
-        .loader .dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes bounce { 0% { transform: translateY(0); opacity: 0.6; } 100% { transform: translateY(-12px); opacity: 1; } }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Metricas PIC - TeamApp</title>
+    <style>
+        :root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
+        *{ box-sizing:border-box }
+        /* 1. ELIMINAR EL FONDO NEGRO AL SELECCIONAR TEXTO */
+        ::selection {
+            background: var(--accent); /* Usar el color de acento o cualquier otro color */
+            color: #fff; /* Asegurar que el texto sea visible */
+        }
+        body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
+        .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
+        h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
+        .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
+        table{ width:100%; border-collapse:collapse; font-size:13px; table-layout: auto; /* Permite que el ancho de la tabla crezca según el contenido */ }
+        thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
+        th,td{ border-bottom:1px solid #1f2937; padding:6px 8px; white-space:nowrap; }
+        tr:hover td { background: rgba(14,165,164,0.15) !important; /* !important para sobreescribir el estilo en línea */ transition: background 0.3s ease; }
+        .hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
+        /* 2. AJUSTE PARA MOSTRAR TODAS LAS COLUMNAS */
+        .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; }
+        /* Aseguramos que la primera columna pegajosa no limite el scroll horizontal */
+        thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 4; font-size: 11px; }
+        thead th:first-child { background: #111827; }
+        /* Es importante mantener el color de fondo para que la celda pegajosa parezca continua */
+        tbody td:first-child { background: var(--bg); z-index: 2; }
+        /* Corregir el hover de la celda pegajosa para que use el color de fondo por defecto al hacer hover */
+        tr:hover td:first-child { background: rgba(14,165,164,0.15) !important; }
+        .empty{ padding:16px; text-align:center; color:var(--muted) }
+        input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
+        input#search:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent, #0ea5a4); }
+        .back-button { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: #fff; padding: 12px 22px; text-align: center; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 10px; transition: 0.3s; margin: 10px auto 0 auto; border: 1px solid rgba(255,255,255,0.2); width: max-content; }
+        .back-button:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+        .loader { display: flex; justify-content: center; align-items: center; padding: 40px 0; }
+        .loader .dot { width: 12px; height: 12px; margin: 0 6px; background: var(--accent); border-radius: 50%; animation: bounce 0.6s infinite alternate; }
+        .loader .dot:nth-child(2) { animation-delay: 0.2s; }
+        .loader .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce { 0% { transform: translateY(0); opacity: 0.6; } 100% { transform: translateY(-12px); opacity: 1; } }
+    </style>
 </head>
 <body>
-    <div class="wrap">
-        <h1>Metricas PIC</h1>
-        <div class="hint">Fuente: Google Sheet (Metricas PIC)</div>
-        <input id="search" placeholder="Filtrar desde la fila 3..." />
-        
-        <div id="content" class="card">
-            <div class="loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-            <div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">Cargando datos...</div>
-        </div>
+    <div class="wrap">
+        <h1>Metricas PIC</h1>
+        <div class="hint">Fuente: Google Sheet (Metricas PIC)</div>
+        <input id="search" placeholder="Filtrar desde la fila 3..." />
+        
+        <div id="content" class="card">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div style="text-align:center; color:var(--muted); font-size:13px; margin-top:8px;">Cargando datos...</div>
+        </div>
 
-        <a href="{{ url_for('home') }}" class="back-button">⬅ Volver al Panel</a>
-    </div>
+        <a href="{{ url_for('home') }}" class="back-button">⬅ Volver al Panel</a>
+    </div>
 
-    <script>
-        // La llamada fetch sigue siendo la misma, pero ahora esperamos datos con colores
-        fetch('/api/metricas-pic/data')
-            .then(response => response.json())
-            .then(render)
-            .catch(error => {
-                console.error("Error al cargar los datos:", error);
-                document.getElementById('content').innerHTML = `<div class="empty">Error al cargar los datos: ${error.message}</div>`;
-            });
+    <script>
+        // La llamada fetch sigue siendo la misma, pero ahora esperamos datos con colores
+        fetch('/api/metricas-pic/data')
+            .then(response => response.json())
+            .then(render)
+            .catch(error => {
+                console.error("Error al cargar los datos:", error);
+                document.getElementById('content').innerHTML = `<div class="empty">Error al cargar los datos: ${error.message}</div>`;
+            });
 
-        function render(data){
-            const el = document.getElementById('content');
-            const { headers, rows } = data || {};
-            if (!headers || headers.length === 0) {
-                el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>';
-                return;
-            }
+        function render(data){
+            const el = document.getElementById('content');
+            const { headers, rows } = data || {};
+            if (!headers || headers.length === 0) {
+                el.innerHTML = '<div class="empty">La hoja está vacía o no tiene datos.</div>';
+                return;
+            }
 
-            const thead = '<thead><tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr></thead>';
-            
-            // --- LÓGICA MODIFICADA PARA APLICAR COLORES ---
-            const tbody = '<tbody>' + rows.map(row => 
-                '<tr>' + row.map(cell => {
-                    const bgColor = cell.color || '#0f172a'; // Color de fondo o fallback
-                    const textColor = getContrastYIQ(bgColor); // Calcula si el texto debe ser blanco o negro
-                    // Aplicamos el color de fondo y el color de texto dinámicamente
-                    return `<td style="background-color:${bgColor}; color:${textColor};">${escapeHtml(cell.value)}</td>`;
-                }).join('') + '</tr>'
-            ).join('') + '</tbody>';
+            const thead = '<thead><tr>' + headers.map(h => `<th>${escapeHtml(h)}</th>`).join('') + '</tr></thead>';
+            
+            // --- LÓGICA MODIFICADA PARA APLICAR COLORES ---
+            const tbody = '<tbody>' + rows.map(row => 
+                '<tr>' + row.map(cell => {
+                    const bgColor = cell.color || '#0f172a'; // Color de fondo o fallback
+                    const textColor = getContrastYIQ(bgColor); // Calcula si el texto debe ser blanco o negro
+                    // Aplicamos el color de fondo y el color de texto dinámicamente
+                    return `<td style="background-color:${bgColor}; color:${textColor};">${escapeHtml(cell.value)}</td>`;
+                }).join('') + '</tr>'
+            ).join('') + '</tbody>';
 
-            el.classList.add('table-wrap');
-            el.innerHTML = `<table>${thead}${tbody}</table>`;
+            el.classList.add('table-wrap');
+            el.innerHTML = `<table>${thead}${tbody}</table>`;
 
-            // La lógica del buscador no cambia
-            const searchInput = document.getElementById('search');
-            searchInput.addEventListener('input', function(){
-                const filter = this.value.toLowerCase();
-                el.querySelectorAll('tbody tr').forEach((row, index) => {
-                    if(index < 2) return; 
-                    const text = row.innerText.toLowerCase();
-                    row.style.display = text.includes(filter) ? '' : 'none';
-                });
-            });
-        }
+            // La lógica del buscador no cambia
+            const searchInput = document.getElementById('search');
+            searchInput.addEventListener('input', function(){
+                const filter = this.value.toLowerCase();
+                el.querySelectorAll('tbody tr').forEach((row, index) => {
+                    if(index < 2) return; 
+                    const text = row.innerText.toLowerCase();
+                    row.style.display = text.includes(filter) ? '' : 'none';
+                });
+            });
+        }
 
-        function escapeHtml(s){
-            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-        }
-        
-        // --- FUNCIÓN NUEVA para calcular el contraste del texto ---
-        function getContrastYIQ(hexcolor){
-            if(!hexcolor) return '#e2e8f0'; // Color de texto por defecto
-            hexcolor = hexcolor.replace('#','');
-            let r = parseInt(hexcolor.substr(0,2),16);
-            let g = parseInt(hexcolor.substr(2,2),16);
-            let b = parseInt(hexcolor.substr(4,2),16);
-            let yiq = ((r*299)+(g*587)+(b*114))/1000;
-            // Si el fondo es oscuro, devuelve texto claro. Si es claro, devuelve texto oscuro.
-            return (yiq >= 128) ? '#111827' : '#f8fafc';
-        }
-    </script>
+        function escapeHtml(s){
+            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+        }
+        
+        // --- FUNCIÓN NUEVA para calcular el contraste del texto ---
+        function getContrastYIQ(hexcolor){
+            if(!hexcolor) return '#e2e8f0'; // Color de texto por defecto
+            hexcolor = hexcolor.replace('#','');
+            let r = parseInt(hexcolor.substr(0,2),16);
+            let g = parseInt(hexcolor.substr(2,2),16);
+            let b = parseInt(hexcolor.substr(4,2),16);
+            let yiq = ((r*299)+(g*587)+(b*114))/1000;
+            // Si el fondo es oscuro, devuelve texto claro. Si es claro, devuelve texto oscuro.
+            return (yiq >= 128) ? '#111827' : '#f8fafc';
+        }
+    </script>
 </body>
 </html>
