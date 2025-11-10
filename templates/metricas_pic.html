@@ -7,30 +7,56 @@
     <style>
         :root{ --bg:#0f172a; --card:#0b1220; --muted:#94a3b8; --accent:#0ea5a4; }
         *{ box-sizing:border-box }
-        /* 1. ELIMINAR EL FONDO NEGRO AL SELECCIONAR TEXTO */
+        
+        /* SOLUCIÓN 1: Quitar fondo negro al seleccionar texto */
         ::selection {
-            background: var(--accent); /* Usar el color de acento o cualquier otro color */
-            color: #fff; /* Asegurar que el texto sea visible */
+            background: var(--accent);
+            color: #fff;
         }
+
         body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:#e2e8f0; font-size:14px; }
         .wrap{ max-width:100%; margin-inline:auto; padding:8px; display:flex; flex-direction:column; gap:10px; }
         h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
         .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
-        table{ width:100%; border-collapse:collapse; font-size:13px; table-layout: auto; /* Permite que el ancho de la tabla crezca según el contenido */ }
+        
+        /* SOLUCIÓN 2: Restablecer la apariencia y asegurar scroll completo */
+        table{ 
+            width:100%; 
+            border-collapse:collapse; 
+            font-size:13px; 
+            table-layout: auto; /* Mantener 'auto' o 'fixed' no es la clave aquí, sino 'white-space: nowrap' */
+        }
         thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
-        th,td{ border-bottom:1px solid #1f2937; padding:6px 8px; white-space:nowrap; }
-        tr:hover td { background: rgba(14,165,164,0.15) !important; /* !important para sobreescribir el estilo en línea */ transition: background 0.3s ease; }
+        th,td{ 
+            border-bottom:1px solid #1f2937; 
+            padding:6px 8px; 
+            white-space:nowrap; /* Clave para que la tabla sea más ancha que el contenedor y se pueda hacer scroll */
+        }
+        tr:hover td { background: rgba(14,165,164,0.15) !important; transition: background 0.3s ease; }
         .hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
-        /* 2. AJUSTE PARA MOSTRAR TODAS LAS COLUMNAS */
         .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; }
-        /* Aseguramos que la primera columna pegajosa no limite el scroll horizontal */
-        thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 4; font-size: 11px; }
+        
+        /* Ajustes de celdas pegajosas (primer columna) */
+        thead th:first-child, tbody td:first-child { 
+            position: sticky; 
+            left: 0; 
+            z-index: 4; 
+            font-size: 11px; 
+        }
         thead th:first-child { background: #111827; }
-        /* Es importante mantener el color de fondo para que la celda pegajosa parezca continua */
-        tbody td:first-child { background: var(--bg); z-index: 2; }
-        /* Corregir el hover de la celda pegajosa para que use el color de fondo por defecto al hacer hover */
-        tr:hover td:first-child { background: rgba(14,165,164,0.15) !important; }
+        
+        /* CORRECCIÓN: Usar el color de fondo principal para que no parezca que la columna flotante tiene padding extra */
+        tbody td:first-child { 
+            background: var(--bg); /* Antes estaba #0f172a, ahora usa la variable CSS --bg */
+            z-index: 2; 
+        }
+        /* CORRECCIÓN: Aplicar el color de hover también a la celda pegajosa */
+        tr:hover tbody td:first-child {
+            background: rgba(14,165,164,0.15) !important;
+        }
+
+
         .empty{ padding:16px; text-align:center; color:var(--muted) }
         input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
         input#search:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent, #0ea5a4); }
