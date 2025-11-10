@@ -19,44 +19,55 @@
         h1{ font-size:18px; font-weight:600; margin:0 0 8px; }
         .card { background: rgba(11, 18, 32, 0.85); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.05); border-radius:12px; padding:8px; box-shadow:0 8px 24px rgba(0,0,0,.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
-        
-        /* SOLUCIÓN 2: Restablecer la apariencia y asegurar scroll completo */
-        table{ 
-            width:100%; 
-            border-collapse:collapse; 
-            font-size:13px; 
-            table-layout: auto; /* Mantener 'auto' o 'fixed' no es la clave aquí, sino 'white-space: nowrap' */
+        
+        table{ 
+            width:100%; 
+            border-collapse:collapse; 
+            font-size:13px; 
+            table-layout: auto; /* Permite scroll horizontal */
         }
         thead th{ position: sticky; top: 0; color:#f8fafc; text-align:left; z-index:3; padding:6px 8px; background: #111827;}
-        th,td{ 
-            border-bottom:1px solid #1f2937; 
-            padding:6px 8px; 
-            white-space:nowrap; /* Clave para que la tabla sea más ancha que el contenedor y se pueda hacer scroll */
+        th,td{ 
+            /* Corregido el valor '1f2en-US: 937' por '1f2937' */
+            border-bottom:1px solid #1f2937; 
+            padding:6px 8px; 
+            white-space:nowrap; /* Clave para el scroll horizontal */
         }
+        /* Color de hover para celdas normales */
         tr:hover td { background: rgba(14,165,164,0.15) !important; transition: background 0.3s ease; }
+        
         .hint{ color:var(--muted); font-size:11px; margin:2px 0 8px }
         .table-wrap{ overflow:auto; max-height:85vh; border-radius:12px; }
-        
-        /* Ajustes de celdas pegajosas (primer columna) */
-        thead th:first-child, tbody td:first-child { 
-            position: sticky; 
-            left: 0; 
-            z-index: 4; 
-            font-size: 11px; 
+        
+        /* 📌 Ajustes de celdas pegajosas (primer columna) */
+        thead th:first-child, tbody td:first-child { 
+            position: sticky; 
+            left: 0; 
+            z-index: 4; 
+            font-size: 11px;
+            background: #111827; /* Fondo por defecto, debe ser igual al thead para que no se vea cortado */
         }
-        thead th:first-child { background: #111827; }
         
-        /* CORRECCIÓN: Usar el color de fondo principal para que no parezca que la columna flotante tiene padding extra */
+        /* Fondo de la celda de la columna AGENTE, asegurando que cubra el fondo de la tarjeta */
         tbody td:first-child { 
-            background: var(--bg); /* Antes estaba #0f172a, ahora usa la variable CSS --bg */
-            z-index: 2; 
+            /* DEBEMOS USAR EL COLOR DE FONDO DE LA TARJETA (.card) O EL FONDO BASE (--bg) 
+              * Para que el scroll horizontal funcione sin ver un corte. 
+              * Vamos a usar el color de la variable --bg para la celda y el hover: */
+            background: var(--bg);
+            z-index: 2; 
         }
-        /* CORRECCIÓN: Aplicar el color de hover también a la celda pegajosa */
-        tr:hover tbody td:first-child {
+        
+        /* Aplicar el color de hover a la celda pegajosa de la primera columna */
+        tr:hover td:first-child {
             background: rgba(14,165,164,0.15) !important;
         }
 
-
+        /* Asegurar que la primera celda del encabezado use el color correcto */
+        thead th:first-child { 
+            background: #111827; 
+            z-index: 5; /* Aseguramos que esté por encima de todo */
+        }
+        
         .empty{ padding:16px; text-align:center; color:var(--muted) }
         input#search { width:100%; padding:8px; margin-bottom:8px; border-radius:8px; border:1px solid #1f2937; background:#111827; color:#f8fafc; transition: all 0.2s ease; }
         input#search:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent, #0ea5a4); }
